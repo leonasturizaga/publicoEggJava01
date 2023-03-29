@@ -2,6 +2,7 @@
 package egg.p02;
 
 import static java.lang.Math.floor;
+import static java.lang.Math.random;
 import java.util.Scanner;
 
 
@@ -146,16 +147,113 @@ public static void main(String[] args) {
 //6. Leer la altura de N personas y determinar el promedio de estaturas que
 //se encuentran por debajo de 1.60 mts. y el promedio de estaturas en
 //general.
+
+//	int n6,n6c;
+//	double n6r,n6sumG,n6sumC;
+//	System.out.println("ingrese numero N de alturas");
+//	n6=leerNum.nextInt();
+//	n6c=0;
+//	n6sumG=0;
+//	n6sumC=0;
+//	
+//	for (int i = 0; i < n6; i++) {
+//		n6r =  0.60 + random()*(2.3 - 0.60);
+//			System.out.println(n6r);
+//		n6sumG=n6sumG + n6r;
+//
+//		if (n6r<1.60) {
+//			n6sumC=n6sumC + n6r;
+//			n6c++;
+//		}
+//	}
+//	System.out.println("-------");
+//	System.out.println(n6);
+//	System.out.println("promedio general: " + n6sumG/n6);
+//	System.out.println(n6c);
+//	System.out.println("promedio menor a 1.60 mts: " + n6sumC/n6c);
+
 //7. Realice un programa que calcule y visualice el valor máximo, el valor
 //mínimo y el promedio de n números (n>0). El valor de n se solicitará al
 //principio del programa y los números serán introducidos por el usuario.
 //Realice dos versiones del programa, una usando el bucle “while” y otra
 //con el bucle “do - while”.
+
+//int n7,n7N,n7min,n7max,n7sum,n7c;
+//	System.out.println("Ingrese numero N");
+//	n7N = leerNum.nextInt();
+//	n7c=0;
+//	n7sum=0;
+//
+////		System.out.println("ingrese un numero");
+////		n7 = leerNum.nextInt();
+////			n7min = n7;
+////			n7max = n7;
+////			n7sum = n7sum + n7;
+////			n7c++;
+////
+////	while (n7c >0 && n7c < n7N) {
+////		System.out.println("ingrese un numero");
+////		n7 = leerNum.nextInt();		
+////		if (n7<n7min) {
+////			n7min=n7;
+////		}
+////		if (n7>n7max) {
+////			n7max=n7;	
+////		}
+////		n7sum = n7sum + n7;
+////		n7c++;	
+////	}
+//
+//		System.out.println("ingrese un numero");
+//		n7 = leerNum.nextInt();
+//		n7min = n7;
+//		n7max = n7;
+//		n7sum = n7sum + n7;
+//		n7c++;
+//	do {
+//		System.out.println("ingrese un numero");
+//		n7 = leerNum.nextInt();		
+//		if (n7<n7min) {
+//			n7min=n7;
+//		}
+//		if (n7>n7max) {
+//			n7max=n7;	
+//		}
+//		n7sum = n7sum + n7;
+//		n7c++;	
+//	} while (n7c > 0 && n7c < n7N);
+//
+//	System.out.println("max: " + n7max);
+//	System.out.println("min: " + n7min);
+//	System.out.println("prom: " + n7sum/n7N);
+//	System.out.println("-----------");	
+	
 //8. Escriba un programa que lea números enteros. Si el número es múltiplo
 //de cinco debe detener la lectura y mostrar la cantidad de números
 //leídos, la cantidad de números pares y la cantidad de números impares.
 //Al igual que en el ejercicio anterior los números negativos no deben
 //sumarse. Nota: recordar el uso de la sentencia break.
+
+//int n8,n8cp,n8ci;
+//n8 = 0;
+//n8cp = 0;
+//n8ci = 0;
+//
+//	do {
+//		System.out.println("ingrese un numero entero positivo");
+//		n8 = leerNum.nextInt();
+//		if (n8>0 && n8%2==0 ) {
+//			n8cp++;
+//		}
+//		if (n8>0 && n8%2!=0 && n8!=5) {
+//			n8ci++;
+//		}
+//	} while (n8 != 5);
+//
+//	System.out.println("cantidad de numeros: " + (n8cp + n8ci) );
+//	System.out.println("cantidad de pares: " + n8cp);
+//	System.out.println("cantidad de impares: " + n8ci);
+	
 //9. Simular la división usando solamente restas. Dados dos números enteros
 //mayores que uno, realizar un algoritmo que calcule el cociente y el
 //residuo usando sólo restas. Método: Restar el dividendo del divisor hasta
@@ -169,13 +267,49 @@ public static void main(String[] args) {
 //3.
 //¿Aún no lo entendiste? Recomendamos googlear división con restas
 //sucesivas.
+
+//int n9a,n9b,n9coc,n9res;
+//
+//	System.out.println("ingrese dos numeros positivos para dividir");
+//	n9a = leerNum.nextInt();
+//	n9b = leerNum.nextInt();
+//	
+//	n9res = n9a;
+//	n9coc=0;
+//	
+//	while (n9res>=n9b) {
+//		n9res = n9res - n9b;
+//		n9coc++;
+//	}
+//	System.out.println("Cociente: " + n9coc);
+//	System.out.println("Residuo: " + n9res);
+
 //10.Realice un programa para que el usuario adivine el resultado de una
 //multiplicación entre dos números generados aleatoriamente entre 0 y 10.
 //El programa debe indicar al usuario si su respuesta es o no correcta. En
 //caso que la respuesta sea incorrecta se debe permitir al usuario ingresar
 //su respuesta nuevamente. Para realizar este ejercicio investigue como
 //utilizar la función Math.random() de Java.
-//311. Escribir un programa que lea un número entero y devuelva el número de
+
+int n10a,n10b,n10,n10c;
+
+n10a = (int)(random()*10);
+n10b = (int)(random()*10);
+//	System.out.println(n10a);
+//	System.out.println(n10b);
+//	System.out.println(n10a*n10b);
+	
+	System.out.println("adivine el numero");
+	n10 = leerNum.nextInt();
+	
+	while (n10 != n10a*n10b) {
+			System.out.println("respuesta incorrecta, ingrese un numero nuevamente");
+			n10 = leerNum.nextInt();
+	}
+	System.out.println("respuesta correcta: N=" + n10a*n10b);
+
+
+//11. Escribir un programa que lea un número entero y devuelva el número de
 //dígitos que componen ese número. Por ejemplo, si introducimos el
 //número 12345, el programa deberá devolver 5. Calcular la cantidad de
 //dígitos matemáticamente utilizando el operador de división. Nota:
