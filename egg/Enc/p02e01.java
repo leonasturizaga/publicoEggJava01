@@ -122,7 +122,7 @@ public static void main(String[] args) {
 //		System.out.println("3. Multiplicar");
 //		System.out.println("4. Dividir");
 //		System.out.println("5. Salir");
-//		System.out.print("Elija opcion:") ;
+//		System.out.print("Elija opcion:");
 //		var6 = leerNum.nextInt();
 //
 //		switch (var6) {
@@ -146,8 +146,10 @@ public static void main(String[] args) {
 //				t6="";
 //			}	
 //
-//	} while (!t6.equalsIgnoreCase("S") );
-
+//	} while ( !t6.equalsIgnoreCase("S") );
+//
+//	System.out.println("fin de programa");
+	
 //7. Realizar un programa que simule el funcionamiento de un dispositivo
 //RS232, este tipo de dispositivo lee cadenas enviadas por el usuario. Las
 //cadenas deben llegar con un formato fijo: tienen que ser de un máximo
@@ -181,14 +183,16 @@ public static void main(String[] args) {
 //			}
 //		}	
 //	} while ( !t7.equals(fde) );
-	
+
+
 //8. Dibujar un cuadrado de N elementos por lado utilizando el carácter “*”.
 //Por ejemplo, si el cuadrado tiene 4 elementos por lado se deberá dibujar
 //lo siguiente:
 //* * * *
-//*     *
-//*     *
+//*       *
+//*       *
 //* * * *
+
 	int n8;
 	System.out.println("ingrese numero");
 	n8 = leerNum.nextInt();
