@@ -39,6 +39,7 @@ public static double opArit(int a, int b){
 	while (var != 5) {
 	System.out.println("ingrese opcion:\n1.Sumar\n2.Restar\n3.Multiplicar\n4.Dividir\n5.Salir");
 	var = leer.nextInt();
+
 		switch (var) {
 			case 1:
 				res = a + b;
@@ -56,7 +57,9 @@ public static double opArit(int a, int b){
 
 				break;			
 			default:
-				throw new AssertionError();
+				System.out.println("opcion incorrecta");
+
+				break;
 		}
 	System.out.println("opeArit: " + res);	
 	}

@@ -26,9 +26,8 @@ public static void  nomEdad(){
 	
 	String nombre,salir;
 	int edad;
-	salir="";
 	
-	while ( !salir.equalsIgnoreCase("NO") ) {
+	do {
 		System.out.println("ingrese nombre");
 		nombre = leerText.nextLine();
 		System.out.println("ingrese la edad");
@@ -42,9 +41,8 @@ public static void  nomEdad(){
 		
 		System.out.println("ingresar nueva persona, Si/No");
 		salir = leerText.nextLine();
-	}
+	} while (!salir.equalsIgnoreCase("NO") );
+	
 }
-
-
 
 }

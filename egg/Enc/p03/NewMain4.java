@@ -29,7 +29,7 @@ public static boolean numPrimo(int num){
 		resto = num%i;
 		if (resto == 0) {
 			cont++;
-			System.out.print("["+i+"]");
+			//System.out.print("["+i+"]");
 		} 
 	}
 	System.out.println("");
