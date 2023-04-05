@@ -14,11 +14,13 @@ public static void main(String[] args) {
 int[][] mat6 = new int[3][3];
 boolean k;
 int n=0;
-	do {
-	mat6=matriz1a9();
+
 //	int[][] mat6={{8,1,6},
 //				{3,5,7},
 //				{4,9,2}};
+
+	do {
+	mat6=matriz1a9();
 	k=validarMagico(mat6);
 	n++;
 		if (k==true) {
@@ -40,14 +42,14 @@ public static int[][] matriz1a9(){
 			for (int j = 0; j < 3; j++) {
 			while (valido==false) {
 				rand=(int)(Math.random()*(9-1+1)+1);
-					if (vec[rand-1]==rand) {
-						mat[i][j]=rand;
-						//System.out.print(vec[rand-1]);
-						vec[rand-1]=0;
-						valido=true;
-						//System.out.println(vec[rand-1]);
-					}
+				if (vec[rand-1]==rand) {
+					mat[i][j]=rand;
+					//System.out.print(vec[rand-1]);
+					vec[rand-1]=0;
+					valido=true;
+					//System.out.println(vec[rand-1]);
 				}
+			}
 			valido=false;
 			}
 		}
@@ -72,6 +74,7 @@ public static boolean validarMagico(int[][] mat){
 		for (int j = 0; j < 3; j++) {
 			aux = aux + mat[i][j];
 			}
+			//System.out.println("filas:" + aux);
 			if (suma != aux) {
 				cont++;
 				//System.out.println("filas" +cont);

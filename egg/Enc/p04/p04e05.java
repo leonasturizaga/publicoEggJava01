@@ -9,15 +9,15 @@ public static void main(String[] args) {
 //La matriz traspuesta de una matriz A se denota por AT y se obtiene cambiando sus filas por columnas (o viceversa).
 //En este caso la matriz es antisimétrica.
 
-int n=2,m=2;
-// int[][] mat5 = new int[n][m];
-//	for (int i = 0; i < n; i++) {
-//		for (int j = 0; j < m; j++) {
-//			mat5[i][j] = (int)(Math.random()*(9-(-9)+1)-9);
-//		}
-//	}
+int n=3,m=3;
+ int[][] mat5 = new int[n][m];
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			mat5[i][j] = (int)(Math.random()*(9-(-9)+1)-9);  //*((x-y+1)+y)
+		}
+	}
 
-int[][] mat5={{0,1},{-1,0}};
+//int[][] mat5={{0,1},{-2,0}};
 
 mostrarMatriz(mat5,n,m);
 	System.out.println("");
