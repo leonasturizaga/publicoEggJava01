@@ -56,7 +56,7 @@ public static void	rellenarMatriz(String[][] sopa){
 }
 public static void mostrarVector(String[] vec){
 	for (int i = 0; i < vec.length; i++) {
-		System.out.println(vec[i] +" ");
+		System.out.print(vec[i] +", ");
 	}
 	System.out.println("");
 }
@@ -91,7 +91,7 @@ public static void palabraPosicion(String[][] sopa,String[] vec6,int[] posh){
 		while (valido==false) {
 			rand=(int)(Math.random()*(20-1+1)+1);
 			if (aux[rand-1]==rand) {
-				aux[i]=0;
+				aux[rand-1]=0;
 				posh[rand-1]=rand;
 				valido=true;
 				
@@ -105,6 +105,7 @@ public static void palabraPosicion(String[][] sopa,String[] vec6,int[] posh){
 		}
 		valido=false;
 	}
+	//mostrarVector(aux);
 }
 
 }

@@ -21,6 +21,7 @@ mostrarMatriz(mat5);
 		}
 	}
 	System.out.println("suma: " + suma5);
+	
 }
 
 //metodos
