@@ -93,7 +93,7 @@ public static void palabraPosicion(char[][] sopa,String[] vec6,int[] posh){
 		while (valido==false) {
 			rand=(int)(Math.random()*(20-1+1)+1);
 			if (aux[rand-1]==rand) {
-				aux[i]=0;
+				aux[rand-1]=0;
 				posh[rand-1]=rand;
 				valido=true;
 				
