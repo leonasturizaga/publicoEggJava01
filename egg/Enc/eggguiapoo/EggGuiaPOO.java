@@ -66,7 +66,7 @@ public static void main(String[] args) {
 
 
 //ejercicio 04
-Rectangulo re = new Rectangulo();
+
 //4. Crear una clase Rectángulo que modele rectángulos por medio de un atributo privado base y un atributo privado altura.
 //La clase incluirá un método para crear el rectángulo con los datos del Rectángulo dados por el usuario. También incluirá 
 //un método para calcular la superficie del rectángulo y un método para calcular el perímetro del rectángulo. Por último,
@@ -74,6 +74,7 @@ Rectangulo re = new Rectangulo();
 //definir los métodos getters, setters y constructores correspondientes.
 //Superficie = base * altura / Perímetro = (base + altura) * 2
 
+Rectangulo re = new Rectangulo();
 re.crearRectangulo();
 	System.out.println("Base: " + re.getBase() + "\nAltura: " +re.getAltura());
 	

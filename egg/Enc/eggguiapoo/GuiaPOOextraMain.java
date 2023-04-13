@@ -1,11 +1,8 @@
 
 package eggguiapoo;
-
 import java.util.Scanner;
 
-
 public class GuiaPOOextraMain {
-
 
 public static void main(String[] args) {
 
@@ -83,7 +80,6 @@ public static void main(String[] args) {
 //	System.out.println("aumento para " + em1.getNombre() + " es: " + em1.calcular_aumento());
 //	System.out.println("aumento para " + em2.getNombre() + " es: " + em2.calcular_aumento());
 //	System.out.println("aumento para " + em3.getNombre() + " es: " + em3.calcular_aumento());
-
 
 
 //6. Crea una clase "Rectángulo" que tenga atributos "lado1" y "lado2" y unmétodo "calcular_area" que calcule y devuelva
