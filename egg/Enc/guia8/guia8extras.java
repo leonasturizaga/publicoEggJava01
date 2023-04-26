@@ -1,6 +1,9 @@
 
 package guia8;
 
+import Entidades.Raices;
+import Servicios.RaicesServicio;
+
 public class guia8extras {
 
 
@@ -22,7 +25,19 @@ public static void main(String[] args) {
 //y en caso de no existir solución, se mostrará un mensaje.
 //Nota: Fórmula ecuación 2o grado: (-b±√((b^2)՞Մ4*a*c)))/(2*a) Solo varía el signo delante de -b
 
+RaicesServicio ras = new RaicesServicio();
 
+Raices ra;
+ra = new Raices(1, -2, 1);
+	System.out.println("disc: " + ras.getDiscriminante(ra));
+	System.out.println("raices: " + ras.tieneRaices(ra));
+	System.out.println("unica? " + ras.tieneRaiz(ra));
+Raices ra2 = new Raices(2,-3,-4);
+	System.out.println("disc2: " + ras.getDiscriminante2(ra2.a, ra2.b, ra2.getC()) );
+	System.out.println("raices: " + ras.tieneRaices2(ras.getDiscriminante(ra2) ) );
+	System.out.println("unica? " + ras.tieneRaiz(ra2));
 
+	
+	
 	}
 }

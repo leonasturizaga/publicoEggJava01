@@ -103,7 +103,6 @@ Persona per2 = pes.crearPersona();
 Persona per3 = pes.crearPersona();
 Persona per4 = pes.crearPersona();
 
-
 imc[0]=pes.calcularIMC(per1);
 mayor[0]=pes.esMayorDeEdad(per1);
 	System.out.println(per1.toString());
