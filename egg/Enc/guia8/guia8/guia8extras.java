@@ -27,17 +27,26 @@ public static void main(String[] args) {
 
 RaicesServicio ras = new RaicesServicio();
 
+	System.out.println("------objeto 1 -------");
 Raices ra;
 ra = new Raices(1, -2, 1);
 	System.out.println("disc: " + ras.getDiscriminante(ra));
 	System.out.println("raices: " + ras.tieneRaices(ra));
 	System.out.println("unica? " + ras.tieneRaiz(ra));
+ras.obtenerRaices(ra);
+ras.obtenerRaiz(ra);
+System.out.println("metodo calcular");
+ras.calcular(ra);
+
+	System.out.println("-----objeto 2 -----");
 Raices ra2 = new Raices(2,-3,-4);
 	System.out.println("disc2: " + ras.getDiscriminante2(ra2.a, ra2.b, ra2.getC()) );
 	System.out.println("raices: " + ras.tieneRaices2(ras.getDiscriminante(ra2) ) );
 	System.out.println("unica? " + ras.tieneRaiz(ra2));
+ras.obtenerRaices(ra2);
+ras.obtenerRaiz(ra2);
+	System.out.println("metodo calcular");
+ras.calcular(ra2);
 
-	
-	
 	}
 }
