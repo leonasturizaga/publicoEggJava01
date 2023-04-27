@@ -1,5 +1,5 @@
 
-package guia8;
+package guia08;
 import Entidades.Cafetera;
 import Entidades.CuentaBancaria;
 import Entidades.Persona;
@@ -7,7 +7,7 @@ import Servicios.CafeteraServicio;
 import Servicios.CuentaBancariaServicio;
 import Servicios.PersonaServicio;
 
-public class Guia8 {
+public class Guia08 {
 
 
 public static void main(String[] args) {

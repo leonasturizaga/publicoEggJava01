@@ -1,8 +1,8 @@
 
-package guia7;
+package guia07;
 
 
-public class Guia7 {
+public class Guia07 {
 
 
 public static void main(String[] args) {

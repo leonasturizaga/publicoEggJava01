@@ -1,5 +1,5 @@
 
-package guia7;
+package guia07;
 
 import java.util.Scanner;
 
