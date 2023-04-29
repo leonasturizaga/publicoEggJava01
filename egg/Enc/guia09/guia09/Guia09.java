@@ -6,12 +6,14 @@ import Entidades.Curso;
 import Entidades.MesSecreto;
 import Entidades.ParDeNumeros;
 import Entidades.Persona;
+import Entidades.Ahorcado;
 import Servicios.ArregloService;
 import Servicios.CadenaServicio;
 import Servicios.CursoService;
 import Servicios.FechaService;
 import Servicios.ParDeNumerosService;
 import Servicios.PersonaService;
+import Servicios.AhorcadoService;
 import java.util.Scanner;
 
 
@@ -37,7 +39,10 @@ public static void main(String[] args) {
 //h) Método contiene(String letra), deberá comprobar si la frase contieneuna letra que ingresa el usuario y devuelve 
 // verdadero si la contiene y falso si no.
 
-//Scanner leerText = new Scanner(System.in);
+Scanner leerNum = new Scanner(System.in).useDelimiter("\n");
+Scanner leerText = new Scanner(System.in).useDelimiter("\n");
+
+
 //	CadenaServicio cas = new CadenaServicio();
 //	Cadena ca;
 //	ca = new Cadena("Alguna frase tres");
@@ -45,19 +50,19 @@ public static void main(String[] args) {
 //	
 //	System.out.println("frase invertida: " + cas.invertirFrase(ca));
 //	System.out.println("Ingrese letra");
-//	cas.vecesRepetido(ca,leerText.next());
+//	cas.vecesRepetido(ca,leerText.nextLine());
 //	
 //	System.out.println("ingrese una frase para comparar");
-//	cas.compararLongitud(ca, leerText.next());
+//	cas.compararLongitud(ca, leerText.nextLine());
 //	
 //	System.out.println("ingrese una frase para unir");
 //	cas.unirFrases(ca, leerText.nextLine());
 //	
 //	System.out.println("ingrese un caracter para reemplazar 'a'");
-//	cas.reemplazar(ca, leerText.next());
+//	cas.reemplazar(ca, leerText.nextLine());
 //	
 //	System.out.println("Ingrese una letra para ver la frase la contiene");
-//	System.out.println("la contiene? " + cas.contiene(ca, leerText.next()) );
+//	System.out.println("la contiene? " + cas.contiene(ca, leerText.nextLine()) );
 
 
 //Método Static y Clase Math
@@ -174,8 +179,8 @@ public static void main(String[] args) {
 //del programa podría ser este: Adivine el mes secreto. Introduzca el nombre del mes en minúsculas: febrero No ha acertado. 
 //Intente adivinarlo  introduciendo otro mes: agosto ¡Ha acertado!
 
-MesSecreto ms = new MesSecreto();
-ms.adivinarMes();
+//MesSecreto ms = new MesSecreto();
+//ms.adivinarMes();
 
 //2. Juego Ahorcado: Crear una clase Ahorcado (como el juego), la cual deberá contener como atributos, un vector con la  
 //palabra a buscar, la cantidad de letras encontradas y la cantidad jugadas máximas que puede realizar el usuario. Definir 
@@ -193,6 +198,14 @@ ms.adivinarMes();
 //● Método intentos(): para mostrar cuántas oportunidades le queda al jugador.
 //● Método juego(): el método juego se encargará de llamar todos los métodos previamente mencionados e informará cuando
 // el usuario descubra toda la palabra o se quede sin intentos. Este método se llamará en el main.
+
+AhorcadoService ahs = new AhorcadoService();
+ahs.juego();
+	
+
+
+	
+	
 //Un ejemplo de salida puede ser así:
 //Ingrese una letra:
 //a
@@ -227,6 +240,9 @@ ms.adivinarMes();
 //Longitud de la palabra: 6
 //Mensaje: La letra no pertenece a la palabra
 //Mensaje: Lo sentimos, no hay más oportunidades
+
+
+
 
 	
 	}

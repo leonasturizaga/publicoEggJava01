@@ -24,13 +24,17 @@ public int mostrarVocales(Cadena obj) {
 	return vocales;
 }
 
+//substring(i, i+1)  // i empieza = 1, termina i+1 sin llegar 
+//palabra
+//P=0   i=0  ->  i=2
+
 //b) Método invertirFrase(), deberá invertir la frase ingresada y mostrarla por pantalla. Por ejemplo: Entrada: "casa  blanca",
 //Salida: "acnalb asac".
 public String invertirFrase(Cadena obj){
 	String invFrase="";
 	
 	for (int i = obj.getLongitud()-1; i >= 0; i--) {
-		invFrase= invFrase + obj.getFrase().substring(i,i+1);
+		invFrase = invFrase + obj.getFrase().substring(i,i+1);
 	}
 	return invFrase;
 }
@@ -55,7 +59,7 @@ public void vecesRepetido(Cadena obj,String letra){
 //e) Método compararLongitud(String frase), deberá comparar la longitud de la frase que compone la clase con otra nueva
 //frase ingresada por el usuario.
 public void compararLongitud(Cadena obj, String frase){
-	if (obj.getLongitud()>frase.length()) {
+	if (obj.getLongitud() > frase.length()) {
 		System.out.println("'" +obj.getFrase() + "' es mayor");
 	}
 	if (obj.getLongitud()==frase.length()) {
@@ -86,7 +90,7 @@ public void reemplazar(Cadena obj, String letra){
 	System.out.println(aux);
 }
 
-//h) Método contiene(String letra), deberá comprobar si la frase contieneuna letra que ingresa el usuario y devuelve 
+//h) Método contiene(String letra), deberá comprobar si la frase contiene una letra que ingresa el usuario y devuelve 
 // verdadero si la contiene y falso si no.
 public boolean contiene(Cadena obj, String letra){
 	

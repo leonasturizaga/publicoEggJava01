@@ -19,6 +19,7 @@ private int longitud;
 		this.longitud = this.frase.length();
 	}
 
+	
 //getters & setters
 	public String getFrase() {
 		return frase;
