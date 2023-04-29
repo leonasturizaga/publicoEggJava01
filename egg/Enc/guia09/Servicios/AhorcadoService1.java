@@ -6,11 +6,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class AhorcadoService {
+public class AhorcadoService1 {
 //Definir  los siguientes métodos en AhorcadoService:
 Scanner leerNum = new Scanner(System.in);
 Scanner leerText = new Scanner(System.in);
-String letras = "";
 //● Metodo crearJuego(): le pide la palabra al usuario y cantidad de jugadas máxima. Con la palabra del usuario, pone la
 //longitud de la palabra, como la longitud del vector. Después ingresa la palabra en el vector, letra por letra, quedando
 // cada letra de la palabra en un índice del vector. Y también, guarda la cantidad de jugadas máximas y el valor que
@@ -20,12 +19,12 @@ public Ahorcado crearJuego(Ahorcado obj){
 	String palabra = leerText.nextLine();
 	System.out.println("Ingrese cantidad de jugadas maxima");
 	int cantJug = leerNum.nextInt();
-	String[] vec = new String[palabra.length()];
+	String[] vec0 = new String[palabra.length()];
 	for (int i = 0; i < palabra.length(); i++) {
-		vec[i]=palabra.substring(i, i+1);
+		vec0[i]=palabra.substring(i, i+1);
 	}
 	
-	return new Ahorcado(cantJug, 0, palabra.length(), vec);
+	return new Ahorcado(cantJug, 0, palabra.length(), vec0);
 }
 
 
@@ -40,11 +39,11 @@ public void buscar(Ahorcado obj, String letra) {
 	String[] aux = obj.getVec();
 	int cont = 0;
 	for (int i = 0; i < obj.getVec().length; i++) {
-		if (aux[i].equalsIgnoreCase(letra)) {
-			cont++;
+			if (aux[i].equalsIgnoreCase(letra)) {
+				cont++;
+			}
 		}
-	}
-	if (cont > 0) {
+	if (cont > 0){
 		System.out.println("La letra pertenece a la palabra");
 	} else {
 		System.out.println("La letra no pertenece a la palabra");
@@ -57,16 +56,12 @@ public void buscar(Ahorcado obj, String letra) {
 public boolean encontradas(Ahorcado obj, String letra) {
 	int cont = 0;
 	String[] aux = obj.getVec();
-
-	if (!letras.contains(letra)) {
-		for (int i = 0; i < obj.getVec().length; i++) {
+	for (int i = 0; i < obj.getVec().length; i++) {
 			if (aux[i].equalsIgnoreCase(letra)) {
 				obj.setCantEnc(obj.getCantEnc() + 1);
-				letras = letras + letra;
 				cont++;
 			}
 		}
-	}
 	System.out.print("Número de letras (encontradas, faltantes): (" + obj.getCantEnc() + "," + (obj.getVec().length - obj.getCantEnc()) + ")");
 	if (cont == 0) {
 		obj.setCantJug(obj.getCantJug() - 1 );
@@ -86,7 +81,7 @@ public void juego(){
 	Ahorcado obj = new Ahorcado();
 	obj = crearJuego(obj);
 	String[] aux1 = new String[obj.getVec().length];
-	Arrays.fill(aux1, "_");
+	Arrays.fill(aux1,"_");
 	do {
 		System.out.println("Ingrese una letra:");
 		String letra = leerText.nextLine();
@@ -115,9 +110,6 @@ public void mostrarVector(String[] vec, String[] aux1, String letra){
 	for (int i = 0; i < vec.length; i++) {
 		if (vec[i].equalsIgnoreCase(letra)) {
 			aux1[i]=letra;
-		}
-		if (vec[i].equalsIgnoreCase(" ")) {
-			aux1[i]=" ";
 		}
 		System.out.print(aux1[i] +" ");
 	}

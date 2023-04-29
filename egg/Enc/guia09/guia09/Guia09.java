@@ -14,6 +14,7 @@ import Servicios.FechaService;
 import Servicios.ParDeNumerosService;
 import Servicios.PersonaService;
 import Servicios.AhorcadoService;
+import Servicios.AhorcadoService1;
 import java.util.Scanner;
 
 
@@ -199,9 +200,9 @@ Scanner leerText = new Scanner(System.in).useDelimiter("\n");
 //● Método juego(): el método juego se encargará de llamar todos los métodos previamente mencionados e informará cuando
 // el usuario descubra toda la palabra o se quede sin intentos. Este método se llamará en el main.
 
-AhorcadoService ahs = new AhorcadoService();
+
+AhorcadoService1 ahs = new AhorcadoService1();
 ahs.juego();
-	
 
 
 	

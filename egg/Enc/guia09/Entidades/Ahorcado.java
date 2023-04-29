@@ -1,6 +1,8 @@
 
 package Entidades;
 
+import java.util.Arrays;
+
 
 public class Ahorcado {
 //2. Juego Ahorcado: Crear una clase Ahorcado (como el juego), la cual deberá contener como atributos, un vector con la  
@@ -44,6 +46,11 @@ private String[] vec = new String[n];
 	}
 	public void setVec(String[] vec) {
 		this.vec = vec;
+	}
+
+	@Override
+	public String toString() {
+		return "Ahorcado{" + "cantJug=" + cantJug + ", cantEnc=" + cantEnc + ", n=" + n + ", vec=" + Arrays.toString(vec) + '}';
 	}
 
 
