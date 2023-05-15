@@ -1,6 +1,8 @@
 
 package guia10;
 
+import Entidades.Alumno;
+import Servicios.AlumnoService;
 import Servicios.PerroService;
 
 
@@ -13,9 +15,8 @@ public static void main(String[] args) {
 //perro en un bucle, el mismo se guardará en la lista y después se le preguntará al usuario si quiere guardar otro perro o 
 //si quiere salir. Si decide salir, se mostrará todos los perros guardados en el ArrayList.
 
-PerroService obj = new PerroService();
-
-obj.crearRazas();
+//PerroService pes = new PerroService();
+//pes.crearRazas();
 
 
 //2. Continuando el ejercicio anterior, después de mostrar los perros, al usuario se le pedirá un perro y se recorrerá la lista
@@ -23,16 +24,16 @@ obj.crearRazas();
 //se mostrará la lista ordenada. Si el perro no se encuentra en la lista, se le informará al usuario y se mostrará la lista
 //ordenada.
 
-obj.fabricaRazas(5);
-obj.mostrarRazas();
-
-obj.eliminarIterator();
-obj.mostrarRazas();
-
-	System.out.println("ordenar lista");
-obj.ordenarLista();
-	System.out.println("reverse order");
-obj.reverseLista();
+//pes.fabricaRazas(5);
+//pes.mostrarRazas();
+//
+//pes.eliminarIterator();
+//pes.mostrarRazas();
+//
+//	System.out.println("ordenar lista");
+//pes.ordenarLista();
+//	System.out.println("reverse order");
+//pes.reverseLista();
 
 //3. Crear una clase llamada Alumno que mantenga información sobre las notas de distintos alumnos. La clase Alumno tendrá
 //como atributos, su nombre y una lista de tipo Integer con sus 3 notas.
@@ -45,9 +46,20 @@ obj.reverseLista();
 //Pueden encontrar un ejemplo de Colección como Atributo en tu Aula Virtual.
 
 
-
-
-
+AlumnoService als = new AlumnoService();
+Alumno al;
+al=als.crearAlumno();
+	//System.out.println(al.getAlumnos());
+	System.out.println("-----mostrar objetos mem");
+als.mostrarObjetosMem();
+	System.out.println("-----mostrar objetos-----");
+	als.mostrarObjetos();
+	System.out.println("----mostrar ArrayList-----");
+	als.mostrarArrayList();
+	System.out.println("-----objeto Alumno to string");
+	System.out.println(al.toString());
+	
+als.notaFinal();
 //4. Un cine necesita implementar un sistema en el que se puedan cargar peliculas. Para esto, tendremos una clase Pelicula
 //con el título, director y duración de la película (en horas). Implemente las clases y métodos necesarios para esta situación,
 //teniendo en cuenta lo que se pide a continuación:
