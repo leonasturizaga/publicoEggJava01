@@ -4,8 +4,10 @@ package guia10;
 import Entidades.Alumno;
 import Entidades.Pelicula;
 import Servicios.AlumnoService;
+import Servicios.PaisService;
 import Servicios.PeliculaService;
 import Servicios.PerroService;
+import Servicios.TiendaService;
 
 
 public class Guia10 {
@@ -78,21 +80,21 @@ public static void main(String[] args) {
 //• Ordenar las películas por título, alfabéticamente y mostrarlo en pantalla.
 //• Ordenar las películas por director, alfabéticamente y mostrarlo en pantalla.
 
-PeliculaService pes = new PeliculaService();
-Pelicula pe;
-pes.crearPelicula();
-	System.out.println("mostrar peliculas");
-pes.mostrarPelicula();
-	System.out.println("mostrar peliculas de mas de 1 hora");
-pes.mostrarPelicula1hora();
-	System.out.println("ordenar por duracion Mayor a Menor");
-pes.duracionMayorAmenor();
-	System.out.println("ordenar por duracion Menor a Mayor");
-pes.duracionMenorAmayor();
-	System.out.println("ordenar alfa por titulo");
-pes.ordenarAlfaTitulo();
-	System.out.println("ordenar alfa por director");
-pes.ordenarAlfaDirector();
+//PeliculaService pes = new PeliculaService();
+//
+//pes.crearPelicula();
+//	System.out.println("mostrar peliculas");
+//pes.mostrarPelicula();
+//	System.out.println("mostrar peliculas de mas de 1 hora");
+//pes.mostrarPelicula1hora();
+//	System.out.println("ordenar por duracion Mayor a Menor");
+//pes.duracionMayorAmenor();
+//	System.out.println("ordenar por duracion Menor a Mayor");
+//pes.duracionMenorAmayor();
+//	System.out.println("ordenar alfa por titulo");
+//pes.ordenarAlfaTitulo();
+//	System.out.println("ordenar alfa por director");
+//pes.ordenarAlfaDirector();
 
 //5. Se requiere un programa que lea y guarde países, y para evitar que se ingresen repetidos usaremos un conjunto. El
 //programa pedirá un país en un bucle, se guardará el país en el conjunto y después se le preguntará al usuario si quiere
@@ -103,15 +105,34 @@ pes.ordenarAlfaDirector();
 //si está en el conjunto se eliminará el país que ingresó el usuario y se mostrará el conjunto. Si el país no se encuentra en 
 // el conjunto se le informará al usuario.
 
+//PaisService pas = new PaisService();
+//
+//pas.ingresarPais();
+//	System.out.println("odenar pais alfabeticamente");
+//pas.ordenarAlfaPais();
+//	System.out.println("buscar pais para eliminarlo");
+//pas.buscarPais();
+
 
 //6. Se necesita una aplicación para una tienda en la cual queremos almacenar los distintos productos que venderemos y el
 //precio que tendrán. Además, se necesita que la aplicación cuente con las funciones básicas.
 //Estas las realizaremos en el servicio. Como, introducir un elemento, modificar su precio, eliminar un producto y mostrar 
-//los productos que tenemos con su precio (Utilizar Hashmap). El HashMap tendrá de llave el nombre del producto y de valor el precio. Realizar un menú para lograr todas las acciones previamente mencionadas.
+//los productos que tenemos con su precio (Utilizar Hashmap). El HashMap tendrá de llave el nombre del producto y de valor el 
+//precio. Realizar un menú para lograr todas las acciones previamente mencionadas.
 	
-	
-	
-	
+TiendaService tis = new TiendaService();
+tis.memu();
+//	tis.introducirElemento();
+//	System.out.println("mostrar Productos");
+//	tis.mostrarProducto();
+//	System.out.println("modificar Precio de producto");
+//	tis.modificarPrecio();
+//	tis.mostrarProducto();
+//	System.out.println("eliminar producto");
+//	tis.eliminarProducto();
+//	tis.mostrarProducto();
+
+
 }
 
 }
