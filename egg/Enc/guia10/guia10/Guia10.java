@@ -2,7 +2,9 @@
 package guia10;
 
 import Entidades.Alumno;
+import Entidades.Pelicula;
 import Servicios.AlumnoService;
+import Servicios.PeliculaService;
 import Servicios.PerroService;
 
 
@@ -46,20 +48,22 @@ public static void main(String[] args) {
 //Pueden encontrar un ejemplo de Colección como Atributo en tu Aula Virtual.
 
 
-AlumnoService als = new AlumnoService();
-Alumno al;
-al=als.crearAlumno();
+//AlumnoService als = new AlumnoService();
+//Alumno al;
+//al=als.crearAlumno();
+//als.notaFinal();
+
 	//System.out.println(al.getAlumnos());
-	System.out.println("-----mostrar objetos mem");
-als.mostrarObjetosMem();
-	System.out.println("-----mostrar objetos-----");
-	als.mostrarObjetos();
-	System.out.println("----mostrar ArrayList-----");
-	als.mostrarArrayList();
-	System.out.println("-----objeto Alumno to string");
-	System.out.println(al.toString());
+//	System.out.println("-----mostrar objetos mem");
+//als.mostrarObjetosMem();
+//	System.out.println("-----mostrar objetos-----");
+//	als.mostrarObjetos();
+//	System.out.println("----mostrar ArrayList-----");
+//	als.mostrarArrayList();
+//	System.out.println("-----objeto Alumno to string");
+//	System.out.println(al.toString());
 	
-als.notaFinal();
+
 //4. Un cine necesita implementar un sistema en el que se puedan cargar peliculas. Para esto, tendremos una clase Pelicula
 //con el título, director y duración de la película (en horas). Implemente las clases y métodos necesarios para esta situación,
 //teniendo en cuenta lo que se pide a continuación:
@@ -73,6 +77,23 @@ als.notaFinal();
 //• Ordenar las películas de acuerdo a su duración (de menor a mayor) y mostrarlo en pantalla.
 //• Ordenar las películas por título, alfabéticamente y mostrarlo en pantalla.
 //• Ordenar las películas por director, alfabéticamente y mostrarlo en pantalla.
+
+PeliculaService pes = new PeliculaService();
+Pelicula pe;
+pes.crearPelicula();
+	System.out.println("mostrar peliculas");
+pes.mostrarPelicula();
+	System.out.println("mostrar peliculas de mas de 1 hora");
+pes.mostrarPelicula1hora();
+	System.out.println("ordenar por duracion Mayor a Menor");
+pes.duracionMayorAmenor();
+	System.out.println("ordenar por duracion Menor a Mayor");
+pes.duracionMenorAmayor();
+	System.out.println("ordenar alfa por titulo");
+pes.ordenarAlfaTitulo();
+	System.out.println("ordenar alfa por director");
+pes.ordenarAlfaDirector();
+
 //5. Se requiere un programa que lea y guarde países, y para evitar que se ingresen repetidos usaremos un conjunto. El
 //programa pedirá un país en un bucle, se guardará el país en el conjunto y después se le preguntará al usuario si quiere
 //guardar otro país o si quiere salir, si decide salir, se mostrará todos los países guardados en el conjunto. (Recordemos 
@@ -81,6 +102,8 @@ als.notaFinal();
 //Por último, al usuario se le pedirá un país y se recorrerá el conjunto con un Iterator, se buscará el país en el conjunto y 
 //si está en el conjunto se eliminará el país que ingresó el usuario y se mostrará el conjunto. Si el país no se encuentra en 
 // el conjunto se le informará al usuario.
+
+
 //6. Se necesita una aplicación para una tienda en la cual queremos almacenar los distintos productos que venderemos y el
 //precio que tendrán. Además, se necesita que la aplicación cuente con las funciones básicas.
 //Estas las realizaremos en el servicio. Como, introducir un elemento, modificar su precio, eliminar un producto y mostrar 

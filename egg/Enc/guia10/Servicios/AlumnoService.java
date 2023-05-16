@@ -21,7 +21,7 @@ private Scanner leerNum = new Scanner(System.in);
 private Scanner leerText = new Scanner(System.in).useDelimiter("\n");
 
 private ArrayList<Alumno> alumnos;
-	 Alumno aux;
+private Alumno aux;
 
 	public AlumnoService() {
 		this.alumnos = new ArrayList<Alumno>();
@@ -41,7 +41,7 @@ public Alumno crearAlumno(){
 		ArrayList<Integer> arr = new ArrayList();
 			for (int i = 0; i < 3; i++) {
 				System.out.println("ingrese nota " + (i + 1) + " del alumno " + nombre);
-				int nota = n + i + 1;
+				int nota = (int)((Math.random()*(10 -2+1))+2);  // (int) (Math.random()*(X-Y+1) + Y)
 				arr.add(nota);
 			}
 		aux = new Alumno(nombre,arr);
@@ -52,9 +52,6 @@ public Alumno crearAlumno(){
 		System.out.println("Quiere crear un alumno? 'NO' para salir");
 		crear = leerText.nextLine();
 	} while (!crear.equalsIgnoreCase("NO"));
-	for (int i = 0; i < alumnos.size(); i++) {
-			System.out.println("arrayPosicion"+(i) +": " + alumnos.get(i).toString());
-	}
 
 	return aux;
 }
@@ -72,23 +69,24 @@ public void notaFinal(){
 			cont++;
 		}
 	}
-	if(cont>0) {
+	if(cont==alumnos.size()) {
 			System.out.println("nombre no encontrado");
 		}
 }
 
 public double promedioFinal(Alumno obj){
-	int suma=0;
-	for (int i = 0; i < 3; i++) {
+	double suma=0;
+	for (int i = 0; i < obj.getNota().size(); i++) {
 		suma = suma +obj.getNota().get(i);
 	}
 	return suma/3;
 }
 
 
-public void mostrar(Alumno obj){
-	System.out.println(" nombreAl: " + obj.getNombre() );
-	System.out.println(" notasAl: " + obj.getNota().toString());
+public void mostrar(){
+	for (int i = 0; i < alumnos.size(); i++) {
+			System.out.println("arrayPosicion"+(i) +": " + alumnos.get(i).toString());
+	}
 }
 
 public void mostrarObjetosMem() {
