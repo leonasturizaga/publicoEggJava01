@@ -8,6 +8,8 @@ import Servicios.PaisService;
 import Servicios.PeliculaService;
 import Servicios.PerroService;
 import Servicios.TiendaService;
+import Utilidades.Comparadores;
+import java.util.Collections;
 
 
 public class Guia10 {
@@ -80,21 +82,27 @@ public static void main(String[] args) {
 //• Ordenar las películas por título, alfabéticamente y mostrarlo en pantalla.
 //• Ordenar las películas por director, alfabéticamente y mostrarlo en pantalla.
 
-//PeliculaService pes = new PeliculaService();
-//
-//pes.crearPelicula();
-//	System.out.println("mostrar peliculas");
-//pes.mostrarPelicula();
-//	System.out.println("mostrar peliculas de mas de 1 hora");
-//pes.mostrarPelicula1hora();
-//	System.out.println("ordenar por duracion Mayor a Menor");
-//pes.duracionMayorAmenor();
-//	System.out.println("ordenar por duracion Menor a Mayor");
-//pes.duracionMenorAmayor();
-//	System.out.println("ordenar alfa por titulo");
-//pes.ordenarAlfaTitulo();
-//	System.out.println("ordenar alfa por director");
-//pes.ordenarAlfaDirector();
+PeliculaService pes = new PeliculaService();
+
+pes.crearPelicula();
+	System.out.println("mostrar peliculas");
+pes.mostrarPelicula();
+	System.out.println("mostrar peliculas de mas de 1 hora");
+pes.mostrarPelicula1hora();
+	System.out.println("ordenar por duracion Mayor a Menor");
+pes.duracionMayorAmenor();
+	System.out.println("ordenar por duracion Menor a Mayor");
+pes.duracionMenorAmayor();
+	System.out.println("ordenar alfa por titulo");
+pes.ordenarAlfaTitulo();
+	System.out.println("ordenar alfa por director");
+pes.ordenarAlfaDirector();
+	System.out.println("ordenar usando comparator");
+	Collections.sort(pes.getLista(), Comparadores.ordenDuracion);
+	pes.mostrarPelicula();
+	Collections.sort(pes.getLista(), Comparadores.titulo);
+	pes.mostrarPelicula();
+
 
 //5. Se requiere un programa que lea y guarde países, y para evitar que se ingresen repetidos usaremos un conjunto. El
 //programa pedirá un país en un bucle, se guardará el país en el conjunto y después se le preguntará al usuario si quiere
@@ -120,8 +128,9 @@ public static void main(String[] args) {
 //los productos que tenemos con su precio (Utilizar Hashmap). El HashMap tendrá de llave el nombre del producto y de valor el 
 //precio. Realizar un menú para lograr todas las acciones previamente mencionadas.
 	
-TiendaService tis = new TiendaService();
-tis.memu();
+//TiendaService tis = new TiendaService();
+//tis.memu();
+
 //	tis.introducirElemento();
 //	System.out.println("mostrar Productos");
 //	tis.mostrarProducto();

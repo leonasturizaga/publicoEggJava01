@@ -27,6 +27,12 @@ public class PeliculaService {
 private Scanner leer = new Scanner(System.in);
 private ArrayList<Pelicula> lista = new ArrayList();
 
+	public ArrayList<Pelicula> getLista() {
+		return lista;
+	}
+
+
+
 public void crearPelicula(){
 	Pelicula obj; // = new Pelicula();
 	String crear = "";
@@ -38,8 +44,8 @@ public void crearPelicula(){
 		//String director = leer.nextLine();
 		String director = "dir_"+(int)(Math.random()*(99-10+1)+10);
 		System.out.println("duracion");
-		//double duracion = leer.nextDouble();
-		double duracion = (Math.random()*(3-0+1)+0)*100/100.0;
+		//Double duracion = leer.nextDouble();
+		Double duracion = (Math.random()*(3-0+1)+0)*100/100.0;
 		duracion = Math.round(duracion*100)/100.0;
 		obj = new Pelicula(titulo, director, duracion);
 		lista.add(obj);
@@ -65,6 +71,7 @@ public void mostrarPelicula1hora(){
 }
 
 //• Ordenar las películas de acuerdo a su duración (de mayor a menor) y mostrarlo en pantalla.
+
 public ArrayList<Pelicula> ordenarPorDuracion(){
 	ArrayList<Pelicula> aux1 = new ArrayList();
 	for (Pelicula pelicula : lista) {
@@ -72,7 +79,7 @@ public ArrayList<Pelicula> ordenarPorDuracion(){
 	}
 	ArrayList<Pelicula> aux2 = new ArrayList();
 	Pelicula objm;
-	double dur = 0.0;
+	Double dur = 0.0;
 
 	for (int i = 0; i < lista.size(); i++) {
 		for (Pelicula peli : aux1) {
@@ -98,6 +105,7 @@ public ArrayList<Pelicula> ordenarPorDuracion(){
 	return aux2;
 }
 
+
 public void duracionMayorAmenor(){
 	ArrayList<Pelicula> aux2 = ordenarPorDuracion();
 		for (Pelicula pelicula : aux2) {
@@ -110,10 +118,6 @@ public void duracionMenorAmayor(){
 	for (int i = aux2.size()-1; i >=0; i--) {
 		System.out.println(aux2.get(i));
 	}
-//	Collections.reverse(aux2);
-//	for (Pelicula pelicula : aux2) {
-//		System.out.println(pelicula);
-//	}
 }
 
 //• Ordenar las películas por título, alfabéticamente y mostrarlo en pantalla.
@@ -127,7 +131,6 @@ public void ordenarAlfaTitulo() {
 		System.out.println(pelicula);
 	}
 }
-
 
 //• Ordenar las películas por director, alfabéticamente y mostrarlo en pantalla.
 public void ordenarAlfaDirector() {

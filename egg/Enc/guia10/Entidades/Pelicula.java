@@ -1,6 +1,8 @@
 
 package Entidades;
 
+import java.util.Comparator;
+
 
 public class Pelicula {
 //4. Un cine necesita implementar un sistema en el que se puedan cargar peliculas. Para esto, tendremos una clase Pelicula
@@ -8,9 +10,9 @@ public class Pelicula {
 //teniendo en cuenta lo que se pide a continuación:
 private String titulo;
 private String director;
-private double duracion;
+private Double duracion;
 
-	public Pelicula(String titulo, String director, double duracion) {
+	public Pelicula(String titulo, String director, Double duracion) {
 		this.titulo = titulo;
 		this.director = director;
 		this.duracion = duracion;
@@ -24,9 +26,10 @@ private double duracion;
 		return director;
 	}
 
-	public double getDuracion() {
+	public Double getDuracion() {
 		return duracion;
 	}
+
 
 	
 	
