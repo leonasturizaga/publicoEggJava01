@@ -1,6 +1,7 @@
 
 package Utilidades;
 
+import Entidades.EquipoDeAjedrez;
 import Entidades.Pelicula;
 import java.util.Comparator;
 
@@ -28,6 +29,20 @@ public class Comparadores {
 					return c2.getTitulo().compareTo( c1.getTitulo() );
 			}
 	};
+
+// EXTRAS ejercicio 2
+public static Comparator<EquipoDeAjedrez> ordenPuntosTotales = new Comparator<EquipoDeAjedrez>(){
+		@Override
+		public int compare(EquipoDeAjedrez t, EquipoDeAjedrez t1) {
+			return t1.getPuntosTotales().compareTo(t.getPuntosTotales());
+		}
+};
+public static Comparator<EquipoDeAjedrez> ordenAlfaNombre = new Comparator<EquipoDeAjedrez>(){
+		@Override
+		public int compare(EquipoDeAjedrez t, EquipoDeAjedrez t1) {
+			return t1.getNombre().compareTo(t.getNombre());
+		}
+};
 	
 		
 }

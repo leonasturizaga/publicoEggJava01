@@ -2,6 +2,12 @@
 package guia10;
 
 import Entidades.AgendaTelefonica;
+import Entidades.EquipoDeAjedrez;
+import Servicios.EquipoDeAjedrezService;
+import Utilidades.Comparadores;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 
 public class guia10extras {
@@ -15,8 +21,8 @@ public static void main(String[] args) {
 // Luego, mostrar un menú que le dé al usuario la opción de agregar un contacto, buscar un contacto por nombre, mostrar
 // todos los contactos o mostrar los contactos ordenados alfabéticamente.
 
-AgendaTelefonica obj1 = new AgendaTelefonica();
-obj1.menu();
+//AgendaTelefonica obj1 = new AgendaTelefonica();
+//obj1.menu();
 
 
 //2) En este ejercicio vamos a mostrar la tabla de posiciones final de un torneo del deporte que deseen. Para ello deberán
@@ -29,10 +35,56 @@ obj1.menu();
 //Una vez finalizado el torneo, determinar el equipo ganador, eliminar al último equipo de la tabla por haber descendido,
 // sumar al nuevo equipo que ascendió de la división inferior, reiniciar los valores de partidos y puntos a 0 para el inicio
 // del siguiente campeonato y mostrar la lista en orden alfabético de los equipos.
+Scanner leerN = new Scanner(System.in);
+Scanner leer = new Scanner(System.in);
+EquipoDeAjedrezService eqs = new EquipoDeAjedrezService();
 
+ArrayList<EquipoDeAjedrez> listaEquipos = new ArrayList();
+int n=10;
+	for (int i = 0; i < n; i++) {
+		String nombre = "eq_"+i;
+		String ciudad = "ciu_"+(int)(Math.random()*9);
+		EquipoDeAjedrez obj=new EquipoDeAjedrez(nombre, ciudad, 0, 0, 0, 0, 0.0);
+		listaEquipos.add(obj);
+	}
+	
+	for (EquipoDeAjedrez var : listaEquipos) {
+		System.out.println(var.toString());
+	}
+	
+eqs.jugarEquipos(listaEquipos);
+	
+	System.out.println("puntaje final");
+eqs.mostrarListaPuntos(listaEquipos);
+	
+	System.out.println("");
+	System.out.println("El equipo campeon es: " + eqs.equipoMax(listaEquipos) );
+	System.out.println("el equipo descendido es: " + eqs.equipoMin(listaEquipos));
+	System.out.println("eliminar equipo");
+	eqs.equipoEliminado(listaEquipos);
+	System.out.println("mostrar lista eliminado");
+	eqs.mostrarListaPuntos(listaEquipos);
 
+	System.out.println("");
+	System.out.println("reiniciar lista e incluir el nuevo equipo");
+	for (int i = 0; i < n; i++) {
+		if (i == n - 1) {
+			String nombre = "eqAsc_" + (int)(Math.random()*9);
+			String ciudad = "ciuAsc_" + (int) (Math.random() * 9);
+			EquipoDeAjedrez obj = new EquipoDeAjedrez(nombre, ciudad, 0, 0, 0, 0, 0.0);
+			listaEquipos.add(obj);
+		} else {
+			String nombre = listaEquipos.get(i).getNombre();
+			String ciudad = listaEquipos.get(i).getCiudad();
+			EquipoDeAjedrez obj = new EquipoDeAjedrez(nombre, ciudad, 0, 0, 0, 0, 0.0);
+			listaEquipos.set(i, obj);
+		}
+	}
 
+	eqs.mostrarListaAlfaNombre(listaEquipos);
 
+	
+	
 //3)Desarrolla una función que reciba como parámetro un ArrayList de objetos "Persona" y devuelva un HashSet con los nombres
 // de las personas. A continuación, implementa otra función que tome este HashSet como entrada y retorne un TreeSet ordenado
 // de los nombres. Además, crea las entidades y servicios necesarios.
