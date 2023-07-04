@@ -155,7 +155,96 @@ inner join jardineria.pedido as t2 on t1.codigo_cliente = t2.codigo_cliente
 inner join jardineria.detalle_pedido as t3 on t2.codigo_pedido = t3.codigo_pedido
 inner join jardineria.producto as t4 on t3.codigo_producto = t4.codigo_producto;
 
+-- Consultas multitabla (Composición externa)
+-- Resuelva todas las consultas utilizando las cláusulas LEFT JOIN, RIGHT JOIN, JOIN.
+-- 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+select nombre_cliente from jardineria.cliente
+left join jardineria.pago on cliente.codigo_cliente = pago.codigo_cliente
+where cliente.codigo_cliente not in (select codigo_cliente from jardineria.pago group by codigo_cliente);
 
+-- 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pedido.
+select nombre_cliente from jardineria.cliente
+left join jardineria.pedido on cliente.codigo_cliente = pedido.codigo_cliente
+where cliente.codigo_cliente not in (select codigo_cliente from jardineria.pedido group by codigo_cliente);
+
+-- 3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que no han realizado ningún pedido.
+select nombre_cliente from jardineria.cliente
+left join jardineria.pedido on cliente.codigo_cliente = pedido.codigo_cliente
+left join jardineria.pago on cliente.codigo_cliente = pago.codigo_cliente
+where pedido.codigo_cliente is null or pago.codigo_cliente is null
+group by cliente.codigo_cliente;
+select cliente.nombre_cliente, pedido.codigo_cliente, pago.codigo_cliente from jardineria.cliente
+left join jardineria.pedido on cliente.codigo_cliente = pedido.codigo_cliente
+left join jardineria.pago on cliente.codigo_cliente = pago.codigo_cliente
+where pedido.codigo_cliente is null or pago.codigo_cliente is null
+group by cliente.codigo_cliente;
+
+-- 4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina asociada.
+select concat(nombre, " ", apellido1, " ", apellido2) from jardineria.empleado
+left join jardineria.oficina on empleado.codigo_oficina = oficina.codigo_oficina
+where empleado.codigo_oficina is null;
+select concat(nombre, " ", apellido1, " ", apellido2), oficina.codigo_oficina from jardineria.empleado
+left join jardineria.oficina on empleado.codigo_oficina = oficina.codigo_oficina;
+
+-- 5. Devuelve un listado que muestre solamente los empleados que no tienen un cliente asociado.
+select concat(nombre, " ", apellido1, " ", apellido2) from jardineria.empleado
+left join jardineria.cliente on empleado.codigo_empleado = cliente.codigo_empleado_rep_ventas
+where codigo_empleado not in (select codigo_empleado_rep_ventas from jardineria.cliente group by codigo_empleado_rep_ventas);
+select concat(nombre, " ", apellido1, " ", apellido2), codigo_empleado from jardineria.empleado
+left join jardineria.cliente on empleado.codigo_empleado = cliente.codigo_empleado_rep_ventas
+where codigo_empleado not in (select codigo_empleado_rep_ventas from jardineria.cliente group by codigo_empleado_rep_ventas);
+
+-- 6. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los que no tienen un cliente asociado.
+select concat(nombre, " ", apellido1, " ", apellido2) from jardineria.empleado
+left join jardineria.oficina on empleado.codigo_oficina = oficina.codigo_oficina
+left join jardineria.cliente on empleado.codigo_empleado = cliente.codigo_empleado_rep_ventas
+where empleado.codigo_oficina is null and cliente.codigo_empleado_rep_ventas is not null
+group by empleado.codigo_empleado;
+select concat(nombre, " ", apellido1, " ", apellido2) from jardineria.empleado
+left join jardineria.oficina on empleado.codigo_oficina = oficina.codigo_oficina
+left join jardineria.cliente on empleado.codigo_empleado = cliente.codigo_empleado_rep_ventas
+where empleado.codigo_oficina is not null and cliente.codigo_empleado_rep_ventas is null
+group by empleado.codigo_empleado;
+select concat(nombre, " ", apellido1, " ", apellido2), oficina.codigo_oficina, cliente.codigo_empleado_rep_ventas from jardineria.empleado
+left join jardineria.oficina on empleado.codigo_oficina = oficina.codigo_oficina
+left join jardineria.cliente on empleado.codigo_empleado = cliente.codigo_empleado_rep_ventas
+group by empleado.codigo_empleado;
+
+-- 7. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+select nombre from jardineria.producto
+left join jardineria.detalle_pedido on producto.codigo_producto = detalle_pedido.codigo_producto
+where producto.codigo_producto not in (select codigo_producto from jardineria.detalle_pedido group by codigo_producto); 
+select t1.nombre, t2.codigo_producto, t2.codigo_pedido from jardineria.producto as t1
+left join jardineria.detalle_pedido as t2 on t1.codigo_producto = t2.codigo_producto
+where t1.codigo_producto in (select codigo_producto from jardineria.detalle_pedido group by codigo_producto); 
+
+-- 8. Devuelve las oficinas donde no trabajan ninguno de los empleados que hayan sido los
+-- representantes de ventas de algún cliente que haya realizado la compra de algún producto de la gama Frutales. 
+select t1.codigo_oficina from jardineria.oficina as t1
+left join jardineria.empleado as t2 on t1.codigo_oficina = t2.codigo_oficina
+where t2.codigo_empleado not in (select t3.codigo_empleado_rep_ventas from jardineria.cliente as t3      -- codigo auxiliar para extraer los empleados que VENDIERON productos de la gama 'frutales'
+	left join jardineria.pedido as t4 on t3.codigo_cliente = t4.codigo_cliente
+	left join jardineria.detalle_pedido as t5 on t4.codigo_pedido = t5.codigo_pedido
+	left join jardineria.producto as t6 on t5.codigo_producto = t6.codigo_producto
+	where t6.gama = 'Frutales'
+	group by t3.codigo_empleado_rep_ventas)
+group by t1.codigo_oficina;    
+
+select t3.codigo_empleado_rep_ventas from jardineria.cliente as t3      -- codigo auxiliar para extraer los empleados que VENDIERON productos de la gama 'frutales'
+	left join jardineria.pedido as t4 on t3.codigo_cliente = t4.codigo_cliente
+	left join jardineria.detalle_pedido as t5 on t4.codigo_pedido = t5.codigo_pedido
+	left join jardineria.producto as t6 on t5.codigo_producto = t6.codigo_producto
+	where t6.gama = 'Frutales'
+	group by t3.codigo_empleado_rep_ventas;
+
+select t1.codigo_oficina, t2.codigo_oficina, t3.codigo_empleado_rep_ventas, t4.codigo_cliente, t5.codigo_pedido, t6.codigo_producto, t6.gama from jardineria.oficina as t1
+left join jardineria.empleado as t2 on t1.codigo_oficina = t2.codigo_oficina
+left join jardineria.cliente as t3 on t2.codigo_empleado = t3.codigo_empleado_rep_ventas
+left join jardineria.pedido as t4 on t3.codigo_cliente = t4.codigo_cliente
+left join jardineria.detalle_pedido as t5 on t4.codigo_pedido = t5.codigo_pedido
+left join jardineria.producto as t6 on t5.codigo_producto = t6.codigo_producto
+where t6.gama = 'Frutales'
+group by t3.codigo_empleado_rep_ventas;
 
 select * from jardineria.cliente;
 select * from jardineria.producto;
@@ -166,23 +255,6 @@ select * from jardineria.empleado;
 select * from jardineria.oficina;
 /*
 
-Consultas multitabla (Composición externa)
-Resuelva todas las consultas utilizando las cláusulas LEFT JOIN, RIGHT JOIN, JOIN.
-1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
-2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún
-pedido.
-3. Devuelve un listado que muestre los clientes que no han realizado ningún pago y los que
-no han realizado ningún pedido.
-4. Devuelve un listado que muestre solamente los empleados que no tienen una oficina
-asociada.
-5. Devuelve un listado que muestre solamente los empleados que no tienen un cliente
-asociado.
-6. Devuelve un listado que muestre los empleados que no tienen una oficina asociada y los
-que no tienen un cliente asociado.
-7. Devuelve un listado de los productos que nunca han aparecido en un pedido.
-8. Devuelve las oficinas donde no trabajan ninguno de los empleados que hayan sido los
-representantes de ventas de algún cliente que haya realizado la compra de algún producto
-de la gama Frutales.
 9. Devuelve un listado con los clientes que han realizado algún pedido, pero no han realizado
 ningún pago.
 10. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el
