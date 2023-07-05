@@ -229,14 +229,12 @@ where t2.codigo_empleado not in (select t3.codigo_empleado_rep_ventas from jardi
 	where t6.gama = 'Frutales'
 	group by t3.codigo_empleado_rep_ventas)
 group by t1.codigo_oficina;    
-
 select t3.codigo_empleado_rep_ventas from jardineria.cliente as t3      -- codigo auxiliar para extraer los empleados que VENDIERON productos de la gama 'frutales'
 	left join jardineria.pedido as t4 on t3.codigo_cliente = t4.codigo_cliente
 	left join jardineria.detalle_pedido as t5 on t4.codigo_pedido = t5.codigo_pedido
 	left join jardineria.producto as t6 on t5.codigo_producto = t6.codigo_producto
 	where t6.gama = 'Frutales'
 	group by t3.codigo_empleado_rep_ventas;
-
 select t1.codigo_oficina, t2.codigo_oficina, t3.codigo_empleado_rep_ventas, t4.codigo_cliente, t5.codigo_pedido, t6.codigo_producto, t6.gama from jardineria.oficina as t1
 left join jardineria.empleado as t2 on t1.codigo_oficina = t2.codigo_oficina
 left join jardineria.cliente as t3 on t2.codigo_empleado = t3.codigo_empleado_rep_ventas
@@ -245,6 +243,64 @@ left join jardineria.detalle_pedido as t5 on t4.codigo_pedido = t5.codigo_pedido
 left join jardineria.producto as t6 on t5.codigo_producto = t6.codigo_producto
 where t6.gama = 'Frutales'
 group by t3.codigo_empleado_rep_ventas;
+
+-- 9. Devuelve un listado con los clientes que han realizado algún pedido, pero no han realizado ningún pago.
+select nombre_cliente, pago.codigo_cliente from jardineria.cliente
+left join jardineria.pedido on cliente.codigo_cliente = pedido.codigo_cliente
+left join jardineria.pago on cliente.codigo_cliente = pago.codigo_cliente
+where cliente.codigo_cliente not in (select codigo_cliente from jardineria.pago) 
+order by nombre_cliente; 
+
+-- 10. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el nombre de su jefe asociado.
+select t1.*, concat(t2.codigo_empleado, " ", t2.nombre, " ", t2.apellido1, " ", t2.apellido2) as 'jefe', t3.codigo_cliente from jardineria.empleado as t1
+left join jardineria.empleado as t2 on t1.codigo_jefe = t2.codigo_empleado
+left join jardineria.cliente as t3 on t1.codigo_empleado = t3.codigo_empleado_rep_ventas
+where t3.codigo_cliente is null;
+
+-- Consultas resumen
+-- 1. ¿Cuántos empleados hay en la compañía?
+select count(*) from jardineria.empleado;
+
+-- 2. ¿Cuántos clientes tiene cada país?
+select pais, count(pais) from jardineria.cliente
+group by pais;
+
+-- 3. ¿Cuál fue el pago medio en 2009?
+select year(fecha_pago), count(total), avg(total), sum(total) from jardineria.pago
+where year(fecha_pago) = '2009'
+group by year(fecha_pago);
+
+-- 4. ¿Cuántos pedidos hay en cada estado? Ordena el resultado de forma descendente por el número de pedidos.
+select estado, count(estado) from jardineria.pedido
+group by estado
+order by count(estado) desc;
+
+-- 5. Calcula el precio de venta del producto más caro y más barato en una misma consulta.
+select max(precio_venta), min(precio_venta) from jardineria.producto;
+select nombre, precio_venta from jardineria.producto
+group by codigo_producto
+having precio_venta = (select max(precio_venta) from jardineria.producto) or precio_venta = (select min(precio_venta) from jardineria.producto);
+
+-- 6. Calcula el número de clientes que tiene la empresa.
+select count(*) from jardineria.cliente;
+
+-- 7. ¿Cuántos clientes tiene la ciudad de Madrid?
+select count(ciudad) from jardineria.cliente
+where ciudad = 'Madrid';
+
+-- 8. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por M?
+select ciudad, count(ciudad) from jardineria.cliente
+where ciudad like 'M%'
+group by ciudad;
+
+-- 9. Devuelve el nombre de los representantes de ventas y el número de clientes al que atiende cada uno.
+select concat(t1.nombre, " ", t1.apellido1, " ", t1.apellido2), count(t2.codigo_cliente) from jardineria.empleado as t1
+left join jardineria.cliente as t2 on t1.codigo_empleado = t2.codigo_empleado_rep_ventas
+group by t1.codigo_empleado;
+
+-- 10. Calcula el número de clientes que no tiene asignado representante de ventas.
+select count(*) from jardineria.cliente
+where codigo_empleado_rep_ventas is null;
 
 select * from jardineria.cliente;
 select * from jardineria.producto;
@@ -255,23 +311,7 @@ select * from jardineria.empleado;
 select * from jardineria.oficina;
 /*
 
-9. Devuelve un listado con los clientes que han realizado algún pedido, pero no han realizado
-ningún pago.
-10. Devuelve un listado con los datos de los empleados que no tienen clientes asociados y el
-nombre de su jefe asociado.
-Consultas resumen
-1. ¿Cuántos empleados hay en la compañía?
-2. ¿Cuántos clientes tiene cada país?
-3. ¿Cuál fue el pago medio en 2009?
-4. ¿Cuántos pedidos hay en cada estado? Ordena el resultado de forma descendente por el
-número de pedidos.
-5. Calcula el precio de venta del producto más caro y más barato en una misma consulta.
-6. Calcula el número de clientes que tiene la empresa.
-7. ¿Cuántos clientes tiene la ciudad de Madrid?
-8. ¿Calcula cuántos clientes tiene cada una de las ciudades que empiezan por M?
-9. Devuelve el nombre de los representantes de ventas y el número de clientes al que atiende
-cada uno.
-10. Calcula el número de clientes que no tiene asignado representante de ventas.
+
 11. Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado
 deberá mostrar el nombre y los apellidos de cada cliente.
 12. Calcula el número de productos diferentes que hay en cada uno de los pedidos.
