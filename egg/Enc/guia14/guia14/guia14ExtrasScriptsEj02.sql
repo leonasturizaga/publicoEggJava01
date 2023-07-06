@@ -302,6 +302,79 @@ group by t1.codigo_empleado;
 select count(*) from jardineria.cliente
 where codigo_empleado_rep_ventas is null;
 
+
+-- 11. Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado deberá mostrar el nombre y los apellidos de cada cliente.
+select t2.nombre_cliente, min(t1.fecha_pago), max(t1.fecha_pago) from jardineria.pago as t1
+inner join jardineria.cliente as t2 on t1.codigo_cliente = t2.codigo_cliente
+-- where t1.total = (select max(total) from jardineria.pago group by codigo_cliente)
+group by t1.codigo_cliente
+order by t1.codigo_cliente;
+select t2.nombre_cliente, t1.codigo_cliente, t1.fecha_pago, t1.total from jardineria.pago as t1
+inner join jardineria.cliente as t2 on t1.codigo_cliente = t2.codigo_cliente
+order by codigo_cliente;
+
+-- 12. Calcula el número de productos diferentes que hay en cada uno de los pedidos.
+select codigo_pedido, count(codigo_producto) from jardineria.detalle_pedido
+group by codigo_pedido;
+
+-- 13. Calcula la suma de la cantidad total de todos los productos que aparecen en cada uno de los pedidos.
+select codigo_pedido, count(codigo_producto), sum(cantidad) from jardineria.detalle_pedido
+group by codigo_pedido;
+
+-- 14. Devuelve un listado de los 20 productos más vendidos y el número total de unidades que
+-- se han vendido de cada uno. El listado deberá estar ordenado por el número total de unidades vendidas.
+select t2.nombre, sum(t1.cantidad) from jardineria.detalle_pedido as t1
+inner join jardineria.producto as t2 on t1.codigo_producto = t2.codigo_producto
+group by t1.codigo_producto
+order by sum(t1.cantidad) desc
+limit 20;
+
+-- 15. La facturación que ha tenido la empresa en toda la historia, indicando la base imponible, el
+-- IVA y el total facturado. La base imponible se calcula sumando el coste del producto por el
+-- número de unidades vendidas de la tabla detalle_pedido. El IVA es el 21 % de la base imponible, y el total la suma de los dos campos anteriores.
+select sum(t2.precio_proveedor * t1.cantidad) 'base imponible', sum(t2.precio_proveedor * t1.cantidad * 0.21) as 'IVA', sum((t2.precio_proveedor * t1.cantidad)*(1.21)) as 'suma total' from jardineria.detalle_pedido t1
+inner join jardineria.producto as t2 on t1.codigo_producto = t2.codigo_producto;
+
+
+
+-- 16. La misma información que en la pregunta anterior, pero agrupada por código de producto.
+select  sum(t2.precio_proveedor * t1.cantidad) 'base imponible', sum(t2.precio_proveedor * t1.cantidad * 0.21) as 'IVA', sum((t2.precio_proveedor * t1.cantidad)*(1.21)) as 'suma total' from jardineria.detalle_pedido t1
+inner join jardineria.producto as t2 on t1.codigo_producto = t2.codigo_producto
+group by t1.codigo_producto;
+
+
+-- 17. La misma información que en la pregunta anterior, pero agrupada por código de producto filtrada por los códigos que empiecen por OR.
+select  sum(t2.precio_proveedor * t1.cantidad) 'base imponible', sum(t2.precio_proveedor * t1.cantidad * 0.21) as 'IVA', sum((t2.precio_proveedor * t1.cantidad)*(1.21)) as 'suma total' from jardineria.detalle_pedido t1
+inner join jardineria.producto as t2 on t1.codigo_producto = t2.codigo_producto
+where t1.codigo_producto like 'OR%'
+group by t1.codigo_producto;
+
+-- 18. Lista las ventas totales de los productos que hayan facturado más de 3000 euros. Se
+-- mostrará el nombre, unidades vendidas, total facturado y total facturado con impuestos (21% IVA)
+select  sum(t2.precio_proveedor * t1.cantidad) 'base imponible', sum(t2.precio_proveedor * t1.cantidad * 0.21) as 'IVA', sum((t2.precio_proveedor * t1.cantidad)*(1.21)) as 'suma total' from jardineria.detalle_pedido t1
+inner join jardineria.producto as t2 on t1.codigo_producto = t2.codigo_producto
+where (t2.precio_proveedor * t1.cantidad)*(1.21) > 3000
+group by t1.codigo_producto;
+
+-- Subconsultas con operadores básicos de comparación
+-- 1. Devuelve el nombre del cliente con mayor límite de crédito.
+select nombre_cliente, limite_credito from jardineria.cliente
+where limite_credito = (select max(limite_credito) from jardineria.cliente);
+
+-- 2. Devuelve el nombre del producto que tenga el precio de venta más caro.
+select nombre, precio_venta from jardineria.producto
+where precio_venta = (select max(precio_venta) from jardineria.producto);
+
+-- 3. Devuelve el nombre del producto del que se han vendido más unidades. (Tenga en cuenta
+-- que tendrá que calcular cuál es el número total de unidades que se han vendido de cada
+-- producto a partir de los datos de la tabla detalle_pedido. Una vez que sepa cuál es el código del producto, puede obtener su nombre fácilmente.)
+select t1.nombre from jardineria.producto as t1
+left join jardineria.detalle_pedido as t2 on t1.codigo_producto = t2.codigo_producto 
+where t1.codigo_producto=(select codigo_producto from jardineria.detalle_pedido where cantidad = (select max(cantidad) from jardineria.detalle_pedido group by cantidad desc limit 1) group by cantidad)
+group by t1.codigo_producto;
+
+
+
 select * from jardineria.cliente;
 select * from jardineria.producto;
 select * from jardineria.pedido;
@@ -311,34 +384,6 @@ select * from jardineria.empleado;
 select * from jardineria.oficina;
 /*
 
-
-11. Calcula la fecha del primer y último pago realizado por cada uno de los clientes. El listado
-deberá mostrar el nombre y los apellidos de cada cliente.
-12. Calcula el número de productos diferentes que hay en cada uno de los pedidos.
-13. Calcula la suma de la cantidad total de todos los productos que aparecen en cada uno de
-los pedidos.
-14. Devuelve un listado de los 20 productos más vendidos y el número total de unidades que
-se han vendido de cada uno. El listado deberá estar ordenado por el número total de
-unidades vendidas.
-15. La facturación que ha tenido la empresa en toda la historia, indicando la base imponible, el
-IVA y el total facturado. La base imponible se calcula sumando el coste del producto por el
-número de unidades vendidas de la tabla detalle_pedido. El IVA es el 21 % de la base
-imponible, y el total la suma de los dos campos anteriores.
-16. La misma información que en la pregunta anterior, pero agrupada por código de producto.
-17. La misma información que en la pregunta anterior, pero agrupada por código de producto
-filtrada por los códigos que empiecen por OR.
-18. Lista las ventas totales de los productos que hayan facturado más de 3000 euros. Se
-mostrará el nombre, unidades vendidas, total facturado y total facturado con impuestos (21%
-IVA)
-Subconsultas con operadores básicos de comparación
-1. Devuelve el nombre del cliente con mayor límite de crédito.
-2. Devuelve el nombre del producto que tenga el precio de venta más caro.
-3. Devuelve el nombre del producto del que se han vendido más unidades. (Tenga en cuenta
-que tendrá que calcular cuál es el número total de unidades que se han vendido de cada
-producto a partir de los datos de la tabla detalle_pedido. Una vez que sepa cuál es el código
-del producto, puede obtener su nombre fácilmente.)
-4. Los clientes cuyo límite de crédito sea mayor que los pagos que haya realizado. (Sin utilizar
-INNER JOIN).
 5. Devuelve el producto que más unidades tiene en stock.
 6. Devuelve el producto que menos unidades tiene en stock.
 7. Devuelve el nombre, los apellidos y el email de los empleados que están a cargo de Alberto
