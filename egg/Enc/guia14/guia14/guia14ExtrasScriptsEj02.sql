@@ -373,38 +373,91 @@ left join jardineria.detalle_pedido as t2 on t1.codigo_producto = t2.codigo_prod
 where t1.codigo_producto=(select codigo_producto from jardineria.detalle_pedido where cantidad = (select max(cantidad) from jardineria.detalle_pedido group by cantidad desc limit 1) group by cantidad)
 group by t1.codigo_producto;
 
+-- 4. Los clientes cuyo límite de crédito sea mayor que los pagos que haya realizado. (Sin utilizar INNER JOIN).
+select t1.nombre_cliente, t1.limite_credito from jardineria.cliente as t1
+inner join jardineria.pago as t2 on t1.codigo_cliente = t2.codigo_cliente
+group by t1.codigo_cliente
+having t1.limite_credito > sum(t2.total);
+select t1.nombre_cliente, t1.limite_credito, sum(t2.total) from jardineria.cliente as t1
+inner join jardineria.pago as t2 on t1.codigo_cliente = t2.codigo_cliente
+group by t1.codigo_cliente
+having t1.limite_credito > sum(t2.total);
+
+-- 4. Los clientes cuyo límite de crédito sea mayor que los pagos que haya realizado. (Sin utilizar INNER JOIN).
+select t1.nombre_cliente, t1.limite_credito from jardineria.cliente as t1
+left join jardineria.pago as t2 on t1.codigo_cliente=t2.codigo_cliente
+group by t1.codigo_cliente
+having t1.limite_credito > sum(t2.total); 
 
 
-select * from jardineria.cliente;
-select * from jardineria.producto;
-select * from jardineria.pedido;
-select * from jardineria.detalle_pedido;
-select * from jardineria.pago;
-select * from jardineria.empleado;
-select * from jardineria.oficina;
-/*
+-- 5. Devuelve el producto que más unidades tiene en stock.
+select nombre, cantidad_en_stock from jardineria.producto
+group by codigo_producto
+having cantidad_en_stock = (select max(cantidad_en_stock) from jardineria.producto);
 
-5. Devuelve el producto que más unidades tiene en stock.
-6. Devuelve el producto que menos unidades tiene en stock.
-7. Devuelve el nombre, los apellidos y el email de los empleados que están a cargo de Alberto
-Soria.
-Subconsultas con ALL y ANY
-1. Devuelve el nombre del cliente con mayor límite de crédito.
-2. Devuelve el nombre del producto que tenga el precio de venta más caro.
-3. Devuelve el producto que menos unidades tiene en stock.
-Subconsultas con IN y NOT IN
-1. Devuelve el nombre, apellido1 y cargo de los empleados que no representen a ningún
-cliente.
-2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
-3. Devuelve un listado que muestre solamente los clientes que sí han realizado ningún pago.
-4. Devuelve un listado de los productos que nunca han aparecido en un pedido.
-5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que
-no sean representante de ventas de ningún cliente.
-Subconsultas con EXISTS y NOT EXISTS
-1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún
-pago.
-2. Devuelve un listado que muestre solamente los clientes que sí han realizado ningún pago.
-3. Devuelve un listado de los productos que nunca han aparecido en un pedido.
-4. Devuelve un listado de los productos que han aparecido en un pedido alguna vez.
-*/
+-- 6. Devuelve el producto que menos unidades tiene en stock.
+select nombre, cantidad_en_stock from jardineria.producto
+group by codigo_producto
+having cantidad_en_stock = (select min(cantidad_en_stock) from jardineria.producto);
+
+-- 7. Devuelve el nombre, los apellidos y el email de los empleados que están a cargo de Alberto Soria.
+select nombre, apellido1, apellido2, email from jardineria.empleado
+where codigo_jefe = (select codigo_empleado from jardineria.empleado where concat(nombre, " ", apellido1) = 'Alberto Soria');
+
+-- Subconsultas con ALL y ANY
+-- 1. Devuelve el nombre del cliente con mayor límite de crédito.
+select nombre_cliente, limite_credito from jardineria.cliente
+where limite_credito = ANY (select  max(limite_credito) from jardineria.cliente);
+
+-- 2. Devuelve el nombre del producto que tenga el precio de venta más caro.
+select nombre, precio_venta from jardineria.producto
+where precio_venta = any (select max(precio_venta) from jardineria.producto);
+
+-- 3. Devuelve el producto que menos unidades tiene en stock.
+select nombre, cantidad_en_stock from jardineria.producto
+where cantidad_en_stock < any (select min(precio_venta) from jardineria.producto);
+
+-- Subconsultas con IN y NOT IN
+-- 1. Devuelve el nombre, apellido1 y cargo de los empleados que no representen a ningún cliente.
+select nombre, apellido1, puesto from jardineria.empleado
+where codigo_empleado not in (select codigo_empleado_rep_ventas from jardineria.cliente group by codigo_empleado_rep_ventas); 
+select nombre, apellido1, puesto from jardineria.empleado
+where codigo_empleado <> any (select codigo_empleado_rep_ventas from jardineria.cliente group by codigo_empleado_rep_ventas); 
+
+-- 2. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+select * from jardineria.cliente
+where codigo_cliente not in (select codigo_cliente from jardineria.pago group by codigo_cliente);
+
+-- 3. Devuelve un listado que muestre solamente los clientes que sí han realizado ningún pago.
+select * from jardineria.cliente
+where codigo_cliente in (select codigo_cliente from jardineria.pago group by codigo_cliente);
+
+-- 4. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+select nombre from jardineria.producto
+where codigo_producto not in (select codigo_producto from jardineria.detalle_pedido group by codigo_producto);
+
+-- 5. Devuelve el nombre, apellidos, puesto y teléfono de la oficina de aquellos empleados que no sean representante de ventas de ningún cliente.
+select t1.nombre, t1.apellido1, t1.apellido2, t1.puesto, t2.telefono from jardineria.empleado as t1
+inner join jardineria.oficina as t2 on t1.codigo_oficina = t2.codigo_oficina 
+where codigo_empleado not in (select codigo_empleado_rep_ventas from jardineria.cliente group by codigo_empleado_rep_ventas);
+
+-- Subconsultas con EXISTS y NOT EXISTS
+-- 1. Devuelve un listado que muestre solamente los clientes que no han realizado ningún pago.
+select codigo_cliente, nombre_cliente from jardineria.cliente
+where not exists (select codigo_cliente from jardineria.pago where cliente.codigo_cliente = pago.codigo_cliente);
+select codigo_cliente, nombre_cliente from jardineria.cliente
+where codigo_cliente not in (select codigo_cliente from jardineria.pago);
+
+-- 2. Devuelve un listado que muestre solamente los clientes que sí han realizado ningún pago.
+select codigo_cliente, nombre_cliente from jardineria.cliente
+where exists (select codigo_cliente from jardineria.pago where cliente.codigo_cliente = pago.codigo_cliente);
+
+-- 3. Devuelve un listado de los productos que nunca han aparecido en un pedido.
+select nombre from jardineria.producto
+where not exists (select codigo_producto from jardineria.detalle_pedido where producto.codigo_producto = detalle_pedido.codigo_producto);	
+
+-- 4. Devuelve un listado de los productos que han aparecido en un pedido alguna vez.
+select nombre from jardineria.producto
+where exists (select codigo_producto from jardineria.detalle_pedido where producto.codigo_producto = detalle_pedido.codigo_producto);
+
 
