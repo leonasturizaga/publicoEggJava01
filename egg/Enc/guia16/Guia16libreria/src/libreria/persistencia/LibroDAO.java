@@ -103,7 +103,7 @@ public Autor buscarAutorPorNombre(String nombre) throws Exception {
 
 public void altaNuevoAutor(String nombre){
 	AutorDAO obj = new AutorDAO();
-	int idAutor = obj.autorIdMax();
+	int idAutor = obj.autorIdMax()+1;
 	Autor autor = new Autor();
 	autor.setId(idAutor);
 	autor.setNombre(nombre);
@@ -118,7 +118,7 @@ public Editorial buscarEditorialPorNombre(String nombre) throws Exception {
 }
 public void altaNuevaEditorial(String nombre){
 	EditorialDAO obj = new EditorialDAO();
-	int idEditorial = obj.editorialIdMax();
+	int idEditorial = obj.editorialIdMax()+1;
 	Editorial editorial = new Editorial();
 	editorial.setId(idEditorial);
 	editorial.setNombre(nombre);

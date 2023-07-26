@@ -18,9 +18,13 @@ public class Guia16libreria {
 
 public static void main(String[] args) {
 
-//	Menu menu = new Menu();
-//	menu.ejecutar();
+//	DatosVideo obj = new DatosVideo();       //para usar la primera vez e introducir datos en las tablas.
+//	obj.ejecutar();
+
 	try {
+	Menu menu = new Menu();
+	menu.menu();
+
 //		AutorServicio aus = new AutorServicio();
 //		aus.mostrarAutorPorId();
 //		aus.mostrarAutorPorId2();
@@ -46,17 +50,17 @@ public static void main(String[] args) {
 //		eds.eliminarEditorial();
 //System.out.println(eds.editorialIdMax());
 
-		System.out.println("probar libro");
-		LibroServicio lbs = new LibroServicio();
-	lbs.mostrarLibroPorId();
-	lbs.mostrarLibroPorTitulo();
-	lbs.mostrarLibros();
-		System.out.println("crear libro");
-		lbs.crearLibro();
-		System.out.println("modificar libro");
-		lbs.modificarLibro();
-		System.out.println("eliminar libro");
-		lbs.eliminarLibro();
+//		System.out.println("probar libro");
+//		LibroServicio lbs = new LibroServicio();
+//	lbs.mostrarLibroPorId();
+//	lbs.mostrarLibroPorTitulo();
+//	lbs.mostrarLibros();
+//		System.out.println("crear libro");
+//		lbs.crearLibro();
+//		System.out.println("modificar libro");
+//		lbs.modificarLibro();
+//		System.out.println("eliminar libro");
+//		lbs.eliminarLibro();
 
 	} catch (Exception e) {
 		e.printStackTrace();

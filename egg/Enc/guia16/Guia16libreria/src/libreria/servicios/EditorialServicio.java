@@ -17,13 +17,15 @@ private final EditorialDAO dao;
 	}
 
 	public void mostrarEditorialPorId() throws Exception{
-	int dato = 1;
+		System.out.println("Ingrese ID de la editorial");
+	int dato = leerN.nextInt();
 	Editorial editorial = dao.buscarPorId(dato);
 	System.out.println(editorial.getNombre());
 }
 
 public void mostrarEditorialPorNombre() throws Exception {
-	String nombre = "segunda editorial";
+	System.out.println("Ingrese nombre de la Editorial");
+	String nombre =leerT.nextLine();
 	Editorial editorial = dao.buscarPorNombre(nombre);
 	System.out.println(editorial.getNombre());
 }

@@ -17,7 +17,8 @@ private final AutorDAO dao;
 	}
 
 	public void mostrarAutorPorId() throws Exception{
-	int dato = 1;
+		System.out.println("Ingrese ID del Autor");
+	int dato = leerN.nextInt();
 	Autor autor = dao.buscarPorId(dato);
 	System.out.println(autor.getNombre());
 }
@@ -29,7 +30,8 @@ private final AutorDAO dao;
 }
 
 public void mostrarAutorPorNombre() throws Exception {
-	String nombre = "segundo autor";
+	System.out.println("Ingrese nombre del Autor");
+	String nombre = leerT.nextLine();
 	Autor autor = dao.buscarPorNombre(nombre);
 	System.out.println(autor.getNombre());
 }
