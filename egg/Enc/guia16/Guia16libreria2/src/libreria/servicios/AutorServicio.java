@@ -45,8 +45,6 @@ public void mostrarAutores() throws Exception {
 public void crearAutor(){
 	try {
 	Autor autor = new Autor();
-//	System.out.println("codigo de autor?");
-//	autor.setId(leerN.nextInt());
 	System.out.println("Nombre de autor?");
 	autor.setNombre(leerT.nextLine());
 	dao.crearAutor(autor);

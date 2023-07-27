@@ -9,15 +9,16 @@ import libreria.entidades.Autor;
 import libreria.entidades.Editorial;
 import libreria.entidades.Libro;
 import libreria.servicios.AutorServicio;
+import libreria.servicios.ClienteServicio;
 import libreria.servicios.EditorialServicio;
 import libreria.servicios.LibroServicio;
+import libreria.servicios.PrestamoServicio;
 
 
 public class Guia16libreria {
 
 
 public static void main(String[] args) {
-
 
 	try {
 	Menu menu = new Menu();
@@ -60,6 +61,40 @@ public static void main(String[] args) {
 //		System.out.println("eliminar libro");
 //		lbs.eliminarLibro();
 
+//		System.out.println("probar cliente");
+//		ClienteServicio cls = new ClienteServicio();
+//		System.out.println("crear cliente");
+//		cls.crearCliente();
+//		System.out.println("crear otro cliente");
+//		cls.crearCliente();
+//		System.out.println("mostrar cliente");
+//		cls.mostrarClientePorId();
+//		cls.mostrarClientePorDocumento();
+//		cls.mostrarClientesPorApellido();
+//		cls.mostrarClientes();
+//		System.out.println("modificar cliente");
+//		cls.modificarCliente();
+//		System.out.println("eliminar cliente");
+//		cls.eliminarCliente();
+//		cls.mostrarClientes();
+
+//		System.out.println("probar prestamo");
+//		PrestamoServicio prs = new PrestamoServicio();
+//		System.out.println("crear prestamo");
+//		prs.crearPrestamo();
+//		System.out.println("crear otro prestamo");
+//		prs.crearPrestamo();
+//		System.out.println("mostrar prestamo");
+//		prs.mostrarPrestamoPorId();
+//		prs.mostrarPrestamosPorDocumento();
+//		prs.mostrarPrestamos();
+//		System.out.println("modificar prestamo");
+//		prs.modificarPrestamo();
+//		System.out.println("eliminar prestamo");
+//		prs.eliminarPrestamo();
+//		prs.mostrarPrestamos();		
+		
+		
 	} catch (Exception e) {
 		e.printStackTrace();
 		System.out.println("error de sistema");

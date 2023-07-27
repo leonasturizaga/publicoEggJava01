@@ -39,9 +39,7 @@ public void mostrarEditoriales() throws Exception {
 public void crearEditorial(){
 	try {
 	Editorial editorial = new Editorial();
-//	System.out.println("codigo de editorial?");
-//	editorial.setId(leerN.nextInt());
-	System.out.println("Nombre de editorial?");
+	System.out.println("Ingrese Nombre de la editorial");
 	editorial.setNombre(leerT.nextLine());
 	dao.crearEditorial(editorial);
 		System.out.println("Editorial creada: " + editorial.toString());

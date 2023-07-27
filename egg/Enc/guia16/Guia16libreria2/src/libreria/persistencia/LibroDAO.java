@@ -11,23 +11,23 @@ import libreria.entidades.Libro;
 
 
 
-public class LibroDAO {
+public final class LibroDAO extends DAO<Libro> {
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Guia16libreria2PU");
-    private EntityManager em = emf.createEntityManager();
-
-//conectar a base de datos	 
-    public void conectar() {
-        if (!em.isOpen()) {
-            em = emf.createEntityManager();
-        }
-    }		
-//desconectar de base de datos
-    public void desconectar() {
-        if (em.isOpen()) {
-            em.close();
-        }
-    }
+//    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Guia16libreria2PU");
+//    private EntityManager em = emf.createEntityManager();
+//
+////conectar a base de datos	 
+//    public void conectar() {
+//        if (!em.isOpen()) {
+//            em = emf.createEntityManager();
+//        }
+//    }		
+////desconectar de base de datos
+//    public void desconectar() {
+//        if (em.isOpen()) {
+//            em.close();
+//        }
+//    }
 
 //buscar Libro por id
     public Libro buscarPorId(long id) throws Exception {
@@ -52,7 +52,6 @@ public Collection<Libro> buscarLibrosPorTitulo(String titulo) throws Exception {
 }
 
 //buscar lista de Libros
-
 public Collection<Libro> mostrarContenido() {
 	conectar();
 	String qlString = "SELECT t1 FROM Libro t1";

@@ -12,8 +12,11 @@ public void guardar(Prestamo prestamo){
 	super.guardar(prestamo);
 }
 
-public void eliminar(Integer id){
-	Prestamo prestamo = buscarPorId(id);
+public void editarPrestamo(Prestamo prestamo){
+	super.editar(prestamo);
+}	
+
+public void eliminarPrestamo(Prestamo prestamo){
 	super.eliminar(prestamo);
 	
 }
@@ -31,5 +34,21 @@ public Collection<Prestamo> mostrarPrestamos(){
 	desconectar();
 	return prestamos;
 }
+
+//buscar ID maximo
+public int prestamoIdMax(){
+	conectar();
+	int idMax=0;
+	String qlString = "SELECT a FROM Prestamo a ORDER BY a.id DESC";
+	Collection<Prestamo> prestamos = em.createQuery(qlString).getResultList();
+	for (Prestamo prestamo : prestamos) {
+		if (prestamo.getId()>idMax) {
+			idMax= prestamo.getId();
+		}
+	}
+	desconectar();
+	return idMax;
+}
+
 
 }

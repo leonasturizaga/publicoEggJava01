@@ -9,23 +9,23 @@ import javax.persistence.Persistence;
 import libreria.entidades.Autor;
 
 
-public class AutorDAO {
+public final class AutorDAO extends DAO<Autor> {
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Guia16libreria2PU");
-    private EntityManager em = emf.createEntityManager();
-
-//conectar a base de datos	 
-public void conectar() {
-	if (!em.isOpen()) {
-		em = emf.createEntityManager();
-	}
-}
-//desconectar de base de datos
-public void desconectar() {
-	if (em.isOpen()) {
-		em.close();
-	}
-}
+//    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Guia16libreria2PU");
+//    private EntityManager em = emf.createEntityManager();
+//
+////conectar a base de datos	 
+//public void conectar() {
+//	if (!em.isOpen()) {
+//		em = emf.createEntityManager();
+//	}
+//}
+////desconectar de base de datos
+//public void desconectar() {
+//	if (em.isOpen()) {
+//		em.close();
+//	}
+//}
 
 //buscar Autor por id
 public Autor buscarPorId(int id) throws Exception {

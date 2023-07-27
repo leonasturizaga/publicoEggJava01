@@ -55,7 +55,6 @@ public void crearLibro(){
 	System.out.print("Ingrese numero de ejemplares restantes: ");
 	Integer ejemplaresRestantes = leerN.nextInt();
 
-	Boolean alta = true;
 	Autor autor = new Autor();
 		do {
 			System.out.println("Ingrese Nombre del autor");
@@ -98,7 +97,7 @@ public void crearLibro(){
 		} while (editorial.getId() == null);
 
 		if (autor!=null && editorial!=null) {
-			libro=new Libro(titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, alta, autor, editorial);
+			libro=new Libro(titulo, anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, autor, editorial);
 			dao.crearLibro(libro);
 			Libro aux =dao.buscarPorTitulo(titulo);
 			System.out.println("Libro creado: " + aux.toString());
@@ -132,8 +131,6 @@ public void modificarLibro() throws Exception {
 			System.out.println("Estado actual: " + libro.toString());
 			System.out.println("Ingrese nuevo titulo");
 			libro.setTitulo(leerT.nextLine());
-			System.out.println("Ingrese nuevo estado de Alta, 'true' o 'false'");
-			libro.setAlta(leerT.nextBoolean());
 			System.out.print("Ingrese año: ");
 			libro.setAnio(leerN.nextInt());
 			System.out.print("Ingrese numero de ejemplares: ");

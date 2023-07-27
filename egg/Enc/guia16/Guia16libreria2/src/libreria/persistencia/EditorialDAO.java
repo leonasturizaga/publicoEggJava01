@@ -8,24 +8,24 @@ import javax.persistence.Persistence;
 import libreria.entidades.Editorial;
 
 
-public class EditorialDAO {
+public final class EditorialDAO extends DAO<Editorial> {
 
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Guia16libreria2PU");
-    private EntityManager em = emf.createEntityManager();
-
-//conectar a base de datos	 
-    public void conectar() {
-        if (!em.isOpen()) {
-            em = emf.createEntityManager();
-        }
-    }		
-//desconectar de base de datos
-    public void desconectar() {
-        if (em.isOpen()) {
-            em.close();
-        }
-    }
+//    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Guia16libreria2PU");
+//    private EntityManager em = emf.createEntityManager();
+//
+////conectar a base de datos	 
+//    public void conectar() {
+//        if (!em.isOpen()) {
+//            em = emf.createEntityManager();
+//        }
+//    }		
+////desconectar de base de datos
+//    public void desconectar() {
+//        if (em.isOpen()) {
+//            em.close();
+//        }
+//    }
 
 //buscar Editorial por id
     public Editorial buscarPorId(int id) throws Exception {

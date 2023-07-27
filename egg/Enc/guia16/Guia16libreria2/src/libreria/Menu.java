@@ -9,8 +9,10 @@ import javax.persistence.Persistence;
 import libreria.entidades.Autor;
 import libreria.entidades.Libro;
 import libreria.servicios.AutorServicio;
+import libreria.servicios.ClienteServicio;
 import libreria.servicios.EditorialServicio;
 import libreria.servicios.LibroServicio;
+import libreria.servicios.PrestamoServicio;
 
 
 public class Menu {
@@ -18,6 +20,8 @@ private Scanner leerN = new Scanner(System.in).useDelimiter("\n");
 private AutorServicio aus = new AutorServicio();
 private EditorialServicio eds = new EditorialServicio();
 private LibroServicio lis = new LibroServicio();
+private ClienteServicio cls = new ClienteServicio();
+private PrestamoServicio prs = new PrestamoServicio();
 private int var;
 
 public void menu() throws Exception {
@@ -64,6 +68,8 @@ public void altas() throws Exception {
 		System.out.println("1) Autor");
 		System.out.println("2) Editorial");
 		System.out.println("3) Libro");
+		System.out.println("4) Cliente");
+		System.out.println("5) Prestamo");
 		System.out.println("0) Volver al menu principal");
 		System.out.println("*************************************************");
 
@@ -84,6 +90,14 @@ public void altas() throws Exception {
 				lis.crearLibro();
 				altas();
 				break;
+			case 4:
+				cls.crearCliente();
+				altas();
+				break;
+			case 5:
+				prs.crearPrestamo();
+				altas();
+				break;				
 			default:
 				System.out.println("Ingrese una opcion valida");
 		}
@@ -96,6 +110,8 @@ public void bajas() throws Exception {
 		System.out.println("1) Autor");
 		System.out.println("2) Editorial");
 		System.out.println("3) Libro");
+		System.out.println("4) Cliente");
+		System.out.println("5) Prestamo");		
 		System.out.println("0) Volver al menu principal");
 		System.out.println("*************************************************");
 
@@ -116,6 +132,14 @@ public void bajas() throws Exception {
 				lis.eliminarLibro();
 				bajas();
 				break;
+			case 4:
+				cls.eliminarCliente();
+				altas();
+				break;
+			case 5:
+				prs.eliminarPrestamo();
+				altas();
+				break;					
 			default:
 				System.out.println("Ingrese una opcion valida");
 		}
@@ -128,6 +152,8 @@ public void modificacion() throws Exception {
 		System.out.println("1) Autor");
 		System.out.println("2) Editorial");
 		System.out.println("3) Libro");
+		System.out.println("4) Cliente");
+		System.out.println("5) Prestamo");			
 		System.out.println("0) Volver al menu principal");
 		System.out.println("*************************************************");
 
@@ -148,6 +174,14 @@ public void modificacion() throws Exception {
 				lis.modificarLibro();
 				modificacion();
 				break;
+			case 4:
+				cls.modificarCliente();
+				altas();
+				break;
+			case 5:
+				prs.modificarPrestamo();
+				altas();
+				break;					
 			default:
 				System.out.println("Ingrese una opcion valida");
 		}
@@ -166,6 +200,12 @@ public void consulta() throws Exception {
 		System.out.println("31) Libro por ISBN");
 		System.out.println("32) Libro por Titulo");
 		System.out.println("33) Lista de Libros");
+		System.out.println("41) Cliente por ID");
+		System.out.println("42) Cliente por Documento");
+		System.out.println("43) Lista de Clientes");
+		System.out.println("51) Prestamo por ID");
+		System.out.println("52) Prestamos por Documento");
+		System.out.println("53) Lista de Prestamos");				
 		System.out.println("0) Volver al menu principal");
 		System.out.println("*************************************************");
 
@@ -210,6 +250,30 @@ public void consulta() throws Exception {
 				lis.mostrarLibros();
 				consulta();
 				break;
+			case 41:
+				cls.mostrarClientePorId();
+				consulta();
+				break;
+			case 42:
+				cls.mostrarClientePorDocumento();
+				consulta();
+				break;
+			case 43:
+				cls.mostrarClientes();
+				consulta();
+				break;
+			case 51:
+				prs.mostrarPrestamoPorId();
+				consulta();
+				break;
+			case 52:
+				prs.mostrarPrestamosPorDocumento();
+				consulta();
+				break;
+			case 53:
+				prs.mostrarPrestamos();
+				consulta();
+				break;				
 			default:
 				System.out.println("Ingrese una opcion valida");
 		}
