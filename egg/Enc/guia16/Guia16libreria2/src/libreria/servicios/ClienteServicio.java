@@ -120,7 +120,7 @@ public void modificarCliente() throws Exception {
 		System.out.print("Ingrese nuevo Nombre del cliente: ");
 		cliente.setNombre(leerT.nextLine());
 		System.out.print("Ingrese nuevo Apellido del cliente: ");
-		cliente.setNombre(leerT.nextLine());
+		cliente.setApellido(leerT.nextLine());
 		System.out.print("Ingrese nuevo Telefono del cliente: ");
 		cliente.setTelefono(leerT.nextLine());
 		System.out.println("");	

@@ -2,6 +2,7 @@
 package libreria.persistencia;
 
 import java.util.Collection;
+import libreria.entidades.Libro;
 import libreria.entidades.Prestamo;
 
 
@@ -50,5 +51,11 @@ public int prestamoIdMax(){
 	return idMax;
 }
 
+public Libro buscarLibroPorId(long isbn) throws Exception{
+	LibroDAO obj = new LibroDAO();
+	Libro libro = new Libro();
+	libro = obj.buscarPorId(isbn);
+	return libro;
+}
 
 }

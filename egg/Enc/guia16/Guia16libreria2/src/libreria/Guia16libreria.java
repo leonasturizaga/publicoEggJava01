@@ -1,7 +1,9 @@
 
 package libreria;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,6 +22,13 @@ public class Guia16libreria {
 
 public static void main(String[] args) {
 
+//	Date fecha = new Date();
+//	System.out.println(fecha.getYear());
+//	System.out.println(fecha.getMonth());
+//	System.out.println(fecha.getDate());
+//	
+//	Date fecha2 = new Date();
+//	System.out.println(fecha.DAY_OF_MONTH);
 	try {
 	Menu menu = new Menu();
 	menu.menu();

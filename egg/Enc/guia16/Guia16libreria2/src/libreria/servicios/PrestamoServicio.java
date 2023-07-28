@@ -1,6 +1,7 @@
 
 package libreria.servicios;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Scanner;
@@ -59,63 +60,90 @@ public void mostrarPrestamos() throws Exception {
 	}
 }
 
-public Date fecha(){
+public Date fecha() {
 	//LocalDate date;
 	int anio, mes, dia;
 	System.out.print("Año: ");
 	anio = leerN.nextInt();
-		System.out.print("Mes: ");
+	System.out.print("Mes: ");
 	mes = leerN.nextInt();
-		System.out.print("Dia: ");
+	System.out.print("Dia: ");
 	dia = leerN.nextInt();
 	//date = LocalDate.of(anio,mes,dia);
-	Date fecha = new Date(anio-1900, mes-1, dia);
+	Date fecha = new Date(anio - 1900, mes - 1, dia);
 	return fecha;
 }
 
 public void crearPrestamo() {
 	try {
-		int n=0;
-		System.out.println("Ingrese Fecha del prestamo: ");		
-		Date fechaPrestamo = fecha();
-		//prestamo.setFechaPrestamo(fechaPrestamo);
-		System.out.println("Ingrese fecha de devolucion del prestamo: ");
-		Date fechaDevolucion = fecha();		
-		
+		int n = 0;
+		Prestamo prestamo = new Prestamo();
 		Libro libro = new Libro();
+		Cliente cliente = new Cliente();
 		while (n < 3) {
 			System.out.print("Ingrese Titulo del Libro: ");
 			String titulo = leerT.nextLine();
-			
+
 			try {
 				LibroDAO lib = new LibroDAO();
 				libro = lib.buscarPorTitulo(titulo);
-				n=3;
+				System.out.println(libro);
+				if (libro.getEjemplaresRestantes() < 1) {
+					System.out.println("Libro no disponible");
+					n++;
+				}
+				if (libro.getEjemplaresRestantes() >=1) {
+					n=4;
+				}
 			} catch (Exception e) {
 				n++;
 				System.out.println("Titulo del libro no encontrado");
 			}
+			System.out.println("n:" + n);
 		}
+		if (n > 3) {
+			
+			while (n < 7) {
+				System.out.print("Ingrese documento del cliente: ");
+				Long documento = leerL.nextLong();
+				try {
+					ClienteDAO cli = new ClienteDAO();
+					cliente = cli.buscarClientePorDocumento(documento);
+					n=7;
+				} catch (Exception e) {
+					n++;
+					System.out.println("Documento del cliente no encontrado");
+				}
 
-		System.out.print("Ingrese documento del cliente: ");
-		Long documento = leerL.nextLong();
-		Cliente cliente=new Cliente();
-		try {
-		ClienteDAO cli= new ClienteDAO();
-		cliente = cli.buscarClientePorDocumento(documento);			
-		} catch (Exception e) {
-			System.out.println("Documento del cliente no encontrado");
-		}
-		System.out.println("");
-		Prestamo prestamo = new Prestamo(fechaPrestamo, fechaDevolucion, libro, cliente);
-		dao.guardar(prestamo);
-		
-		Prestamo aux = dao.buscarPorId(dao.prestamoIdMax());		
-		if (aux.getId() != null) {
-			System.out.println("Prestamo creado: " + aux.toString());			
-		} else {
-			System.out.println("error en la creacion");
+			}
+			if (n > 6) {
+				System.out.println("Ingrese Fecha del prestamo, 1) hoy 2) otra fecha: ");
+				int var = leerN.nextInt();
+				Date fechaPrestamo = new Date();
+				switch (var) {
+					case 1:
+						prestamo = new Prestamo(fechaPrestamo, null, libro, cliente);
+						break;
+					case 2:
+						fechaPrestamo = fecha();
+						prestamo = new Prestamo(fechaPrestamo, null, libro, cliente);
+						break;
+					default:
+						System.out.println("Ingrese una opcion valida");
+				}
 
+				
+				libro.setEjemplaresRestantes(libro.getEjemplaresRestantes()-1);
+				libro.setEjemplaresPrestados(libro.getEjemplaresPrestados()+1);	
+				dao.guardar(prestamo);
+				Prestamo aux = dao.buscarPorId(dao.prestamoIdMax());
+				if (aux.getId() != null) {
+					System.out.println("Prestamo creado: " + aux.toString());
+				} else {
+					System.out.println("error en la creacion");
+
+				}
+			}
 		}
 
 	} catch (Exception e) {
@@ -123,6 +151,49 @@ public void crearPrestamo() {
 		e.printStackTrace();
 	}
 }
+
+public void devolverPrestamo() throws Exception {
+	System.out.println("Ingrese ID");
+	int dato = leerN.nextInt();
+	try {
+	Prestamo prestamo = dao.buscarPorId(dato);
+	LibroDAO obj = new LibroDAO();
+	Libro libro = new Libro();
+	System.out.println(prestamo.toString());
+		System.out.println("Ingrese Fecha de devolucion, 1) hoy 2) otra fecha: ");
+		int var=leerN.nextInt();
+		Date fechaDevolucion=new Date();
+		switch (var) {
+			case 1:
+				prestamo.setFechaDevolucion(fechaDevolucion);
+				libro=dao.buscarLibroPorId(prestamo.getLibro().getIsbn());
+				System.out.println(libro);
+				libro.setEjemplaresRestantes(libro.getEjemplaresRestantes()+1);
+				libro.setEjemplaresPrestados(libro.getEjemplaresPrestados()-1);
+				dao.editarPrestamo(prestamo);
+				obj.modificarLibro(libro);
+				break;
+			case 2:
+				fechaDevolucion = fecha();
+				prestamo.setFechaDevolucion(fechaDevolucion);
+				libro=dao.buscarLibroPorId(prestamo.getLibro().getIsbn());
+				System.out.println(libro);
+				libro.setEjemplaresRestantes(libro.getEjemplaresRestantes()+1);
+				libro.setEjemplaresPrestados(libro.getEjemplaresPrestados()-1);
+				dao.editarPrestamo(prestamo);
+				obj.modificarLibro(libro);
+				break;				
+			default:
+				System.out.println("Ingrese una opcion valida");
+		}
+	
+	} catch (Exception e) {
+		//e.printStackTrace();
+		System.out.println("error en buscar prestamo por ID");
+	}
+
+}
+
 
 public void modificarPrestamo() throws Exception {
 	Prestamo prestamo = new Prestamo();

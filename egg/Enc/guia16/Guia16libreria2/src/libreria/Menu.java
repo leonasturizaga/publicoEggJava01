@@ -31,6 +31,7 @@ public void menu() throws Exception {
 		System.out.println("2) Bajas");
 		System.out.println("3) Modificacion");
 		System.out.println("4) Consulta");
+		System.out.println("5) Devolucion");
 		System.out.println("0) Salir");
 		System.out.println("*************************************************");
 
@@ -56,6 +57,10 @@ public void menu() throws Exception {
 				consulta();
 				menu();
 				break;
+			case 5:
+				prs.devolverPrestamo();
+				menu();
+				break;				
 			default:
 				System.out.println("Ingrese una opcion valida");
 		}
@@ -193,19 +198,19 @@ public void consulta() throws Exception {
 		System.out.println("*********************CONSULTA*******************");
 		System.out.println("11) Autor por ID");
 		System.out.println("12) Autor por Nombre");
-		System.out.println("13) Lista de Autores");
+		System.out.println("13) Autores Lista");
 		System.out.println("21) Editorial por ID");
 		System.out.println("22) Editorial por Nombre");
-		System.out.println("23) Lista de Editoriales");
+		System.out.println("23) Editoriales Lista");
 		System.out.println("31) Libro por ISBN");
 		System.out.println("32) Libro por Titulo");
-		System.out.println("33) Lista de Libros");
+		System.out.println("33) Libros Lista");
 		System.out.println("41) Cliente por ID");
 		System.out.println("42) Cliente por Documento");
-		System.out.println("43) Lista de Clientes");
+		System.out.println("43) Clientes Lista");
 		System.out.println("51) Prestamo por ID");
 		System.out.println("52) Prestamos por Documento");
-		System.out.println("53) Lista de Prestamos");				
+		System.out.println("53) Prestamos Lista");				
 		System.out.println("0) Volver al menu principal");
 		System.out.println("*************************************************");
 

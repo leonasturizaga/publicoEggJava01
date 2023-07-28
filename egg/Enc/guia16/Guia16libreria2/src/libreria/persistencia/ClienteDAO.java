@@ -30,7 +30,7 @@ public Cliente buscarClientePorDocumento(Long documento){
 	String qlString = "SELECT a FROM Cliente a WHERE a.documento = :documento";
 	Cliente cliente = (Cliente) em.createQuery(qlString).setParameter("documento", documento).getSingleResult();
 	desconectar();
-		return cliente;	
+	return cliente;	
 }
 	
 public Collection<Cliente> buscarClientesPorApellido(String apellido){
