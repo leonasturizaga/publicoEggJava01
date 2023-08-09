@@ -1,0 +1,29 @@
+#section01 {
+    background-color: bisque;
+}
+
+#section01 h1{
+    font-family:cursive, Helvetica, sans-serif ;
+    text-align: center;
+}
+#section01 h2{
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    text-align: center;
+}
+#section01 p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:blue;
+    text-align:left;
+}
+#section02 .link:hover{
+    color: #fff;
+    background-color: #CC0000;
+}
+#section02 .link{
+    color: #CC0000;
+}
+#section02 .link::after{
+    color: #CCC;
+}
+
