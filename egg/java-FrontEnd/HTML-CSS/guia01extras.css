@@ -23,3 +23,12 @@ table .datoOdd{
 table td{
     text-align: center;
 }
+#section-backgroundimage{
+    background-image: url(imagenes/WeEnhanceHumanCoop.png);
+    border: 2px solid black;
+    background-size: 100%;
+
+}
+#tarjetasProductos{
+    border: solid lightgray;
+}
