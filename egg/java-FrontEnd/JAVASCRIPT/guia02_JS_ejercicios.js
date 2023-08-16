@@ -3,10 +3,10 @@
 // hoy? (soleado, nublado, lloviendo). A continuación, mostrar por pantalla un mensaje que
 // indique “El día de hoy está ...”, completando el mensaje con el dato que ingresó el usuario.
 
-// var num01 = prompt("¿cómo está el día de hoy? \n 1) soleado, 2) nublado, 3) lloviendo"); 
+// var num01 = prompt("¿cómo está el día de hoy? \n 1) soleado, 2) nublado, 3) lloviendo");
 // let array01 = ["soleado", "nublado", "lloviendo"];
 // console.log("El día de hoy está " + array01[num01-1]);
-// console.log(`El día de hoy está ${array01[num01-1]}` ); //lo mismo con template 
+// console.log(`El día de hoy está ${array01[num01-1]}` ); //lo mismo con template
 
 // ejercicio 02
 // 2. Conocido el número en matemática PI π, pedir al usuario que ingrese el valor del radio
@@ -37,7 +37,6 @@
 // ingresa alguno de esos dos caracteres se deberá de imprimir un mensaje por pantalla
 // que diga “CORRECTO”, en caso contrario, se deberá imprimir “INCORRECTO”
 
-
 // do{
 //     var var04 = prompt("ingroduzca una letra");
 //     var04 = var04.toUpperCase();
@@ -46,11 +45,10 @@
 //             console.log("correcto: " + var04);
 //         } else {
 //             console.log("incorrecto: " + var04);
-//         }      
+//         }
 //     }
 
 // }while(var04 != 0);
-
 
 // 5. Construir un programa que simule un menú de opciones para realizar las cuatro
 // operaciones aritméticas básicas (suma, resta, multiplicación y división) con dos valores
@@ -98,7 +96,7 @@
 //             }
 //         break;
 //         default:
-//             console.log("ingrese una opcion valida");                    
+//             console.log("ingrese una opcion valida");
 //     }
 // }
 
@@ -129,45 +127,139 @@
 // 8. Escribir un programa que lea números enteros hasta teclear 0 (cero). Al finalizar el
 // programa se debe mostrar el máximo número ingresado, el mínimo, y el promedio de
 // todos ellos.
-var var08;
-var max08=0;
-var min08=0;
-var suma08=0;
-var cont08=0;
-do {
-    let aux=parseInt(prompt("ingrese un numero"));
-    var08=aux;
-    if (max08==0 & min08==0) {
-        max08=aux;
-        min08=aux;
-        suma08=suma08+aux;
-        cont08++;        
-    } else {
-        if (aux!=0) {
-            if(aux>max08){
-                max08=aux;
-            }
-            if(aux<min08){
-                min08=aux;
-            }
-            suma08=suma08+aux;
-            cont08++;
-        }
-    }
-} while (var08 != 0);
-console.log(mostrarResultados(max08,min08,suma08,cont08));
+// var var08;
+// var max08=0;
+// var min08=0;
+// var suma08=0;
+// var cont08=0;
+// do {
+//     let aux=parseInt(prompt("ingrese un numero"));
+//     var08=aux;
+//     if (max08==0 & min08==0) {
+//         max08=aux;
+//         min08=aux;
+//         suma08=suma08+aux;
+//         cont08++;
+//     } else {
+//         if (aux!=0) {
+//             if(aux>max08){
+//                 max08=aux;
+//             }
+//             if(aux<min08){
+//                 min08=aux;
+//             }
+//             suma08=suma08+aux;
+//             cont08++;
+//         }
+//     }
+// } while (var08 != 0);
+// console.log(mostrarResultados(max08,min08,suma08,cont08));
 
-function mostrarResultados(max08,min08,suma08,cont08){
-    console.log("Maximo: " + max08);
-    console.log("Minimo: " + min08);
-    console.log("Promedio: " + suma08/cont08);
-}
+// function mostrarResultados(max08,min08,suma08,cont08){
+//     console.log("Maximo: " + max08);
+//     console.log("Minimo: " + min08);
+//     console.log("Promedio: " + suma08/cont08);
+// }
 
 // 9. Realizar un programa que pida una frase y el programa deberá mostrar la frase con un
 // espacio entre cada letra. La frase se mostrara así: H o l a. Nota: recordar el
 // funcionamiento de la función Substring().
+// var var09 = prompt("Ingrese una frase");
+// var arrVar09 = var09.split("");
+// console.log(JSON.stringify(arrVar09));
+
+// var var09a = "";
+// var var09b = "";
+// var var09c = "";
+// var aux2 = 0;
+// for (let aux1 in var09) {
+//   var09a = var09a + var09.substring(aux1, aux2 + 1) + " ";
+//   //console.log(aux + ": " + var09.substring(aux, (aux2+1)) + " - " + var09.charAt(aux));
+//   aux2++;
+// }
+// console.log("con substring(): " + var09a);
+
+// aux2 = 0;
+// for (let aux1 in var09) {
+//   var09b = var09b + var09.charAt(aux1) + " ";
+// }
+// console.log("con charAt(): " + var09b);
+
+// for (let dato of arrVar09) {
+//   var09c = var09c + dato + " ";
+// }
+// console.log("con for of: " + var09c);
 
 // 10. Escribir una función flecha que reciba una palabra y la devuelva al revés.
+var var10=prompt("escriba una palabra");
+var var10f="";
+var a = var10.split("").reverse();
+console.log(a);
+function invertir (a,var10f){
+    for(let i=0; i<a.length; i++){
+        var10f=var10f + a[i];
+        console.log(var10f);        
+    }
+    return var10f;
+}
+console.log("resultado metodo funcion con array a: " + invertir(a,var10f));
+
+console.log("metodo flecha: " + var10f);
+let var10r = (b,var10f) => {for(let i=0; i<b.length; i++){ var10f=var10f + b[i];} return var10f;};
+console.log("resultado metodo flecha con array b: " + var10r(var10.split("").reverse(),var10f));
+
+
+// var var10s = var10.split("");
+// var var10r = var10s.reverse();
+// console.log(var10r);
+// var var10f="";
+// rev(var10r);
+// function rev(var10r){
+//     for (let i in var10) {
+//         var10f = var10f + var10.charAt(var10.length -1 - i);
+//     }
+//     console.log(var10f);
+// } 
+// var invertir = (var10.split("").reverse()) => ; // => var10r.length
+// let resp = (invertir) => {for(let i=0; i< invertir.length; i++){ console.log(invertir[i]);} 
+
+// }
+// console.log("con funcion flecha: " + invertir);
+// console.log("con funcion resp: " + resp());
+
+// let rev = (var10s) => var10s.forEach(element => {
+//     console.log(var10.charAt(var10.length))
+// });
+
+// let frutas = ["Manzana", "Naranja", "Uva"];
+// for (let i = 0; i < frutas.length; i++) {
+//   console.log(frutas[i]);
+// }
+// //array.forEach(function (valorActual, indice, frutas) {}, thisValor);
+// let valorActual;
+// let indice;
+// frutas.forEach(mostrarElementosArray);
+// function mostrarElementosArray(elemento, indice, array) {
+//   console.log("a[" + indice + "] = " + elemento);
+// }
+
+// for (let fruta of frutas) {
+//   console.log(fruta); // ["Manzana", "Naranja", "Uva"];
+// }
+// var empleado1 ={
+//     nom: "nom1",
+//     ape: "ape1",
+// }
+// var empleado2 ={
+//     nom: "nom2",
+//     ape: "ape2",
+// }
+// var empleados = [empleado1,empleado2];
+// for (let empleado of empleados) {
+//   for (let dato in empleado) {
+//     console.log(empleado[dato]);
+//   }
+// }
 
 // 11. Escribir una función que reciba un String y devuelva la palabra más larga.
 // String Ejemplo: “Guia de JavaScript”
@@ -175,3 +267,54 @@ function mostrarResultados(max08,min08,suma08,cont08){
 
 // 12. Escribir una función flecha de JavaScript que reciba un argumento y retorne el tipo de
 // dato.
+
+// 13. Crear un objeto persona, con las propiedades nombre, edad, sexo ('H' hombre, 'M' mujer,
+// 'O' otro), peso y altura. A continuación, muestre las propiedades del objeto JavaScript.
+// 14. Crear un objeto libro que contenga las siguientes propiedades: ISBN, Título, Autor,
+// Número de páginas. Crear un método para cargar un libro pidiendo los datos al usuario
+// y luego informar mediante otro método el número de ISBN, el título, el autor del libro y el
+// numero de páginas.
+// 15. Escribe un programa JavaScript para calcular el área y el perímetro de un objeto Círculo
+// con la propiedad radio. Nota: Cree dos métodos para calcular el área y el perímetro. El
+// radio del círculo lo proporcionará el usuario.
+// 16. Realizar un programa que rellene dos vectores al mismo tiempo, con 5 valores aleatorios
+// y los muestre por pantalla.
+// 17. Realizar un programa que elimine los dos últimos elementos de un array. Mostrar el
+// resultado
+// 18. A partir del siguiente array: var valores = [true, 5, false, "hola", "adios", 2]:
+// a) Determinar cual de los dos elementos de texto es mayor
+// b) Utilizando exclusivamente los dos valores booleanos del array, determinar los
+// operadores necesarios para obtener un resultado true y otro resultado false
+// c) Determinar el resultado de las cinco operaciones matemáticas realizadas con los
+// dos elementos numéricos
+// 19. Realizar un programa en Java donde se creen dos arreglos: el primero será un arreglo A
+// de 50 números reales, y el segundo B, un arreglo de 20 números, también reales. El
+// programa deberá inicializar el arreglo A con números aleatorios y mostrarlo por pantalla.
+// Luego, el arreglo A se debe ordenar de menor a mayor y copiar los primeros 10 números
+// ordenados al arreglo B de 20 elementos, y rellenar los 10 últimos elementos con el valor
+// 0.5. Mostrar los dos arreglos resultantes: el ordenado de 50 elementos y el combinado
+// de 20.
+// 20. Realizar un programa que obtenga la siguiente matriz [[3], [6], [9], [12], [15]] y devuelve y
+// muestre el siguiente array [6, 9, 12, 15, 18].
+// 21. Escribir un programa para obtener un array de las propiedades de un objeto Persona.
+// Las propiedades son nombre, edad, sexo ('H' hombre, 'M' mujer, 'O' otro), peso y altura.
+// 22. Escribir un programa de JavaScript que al clickear un botón muestre un mensaje a
+// elección.
+// 23. Resalte todas las palabras de más de 8 caracteres en el texto del párrafo (con un fondo
+// amarillo, por ejemplo)
+// 24. Escribir un programa de JavaScript que a través de un formulario calcule el radio de un
+// circulo y lo muestre en el HTML.
+// 25. Escriba una función de JavaScript para obtener los valores de Nombre y Apellido del
+// siguiente formulario.
+// <!DOCTYPE html>
+// <html><head>
+// <meta charset=utf-8 />
+// <title>Obtener nombre y apellido de form </title>
+// </head><body>
+// <form id="form1" onsubmit="getFormValores()">
+// Nombre: <input type="text" name="nombre" value="David"><br>
+// Apellido: <input type="text" name="apellido" value="Beckham"><br>
+// <input type="submit" value="Submit">
+// </form>
+// </body>
+// </html>
