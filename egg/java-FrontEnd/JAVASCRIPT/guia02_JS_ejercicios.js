@@ -12,12 +12,14 @@
 // 2. Conocido el número en matemática PI π, pedir al usuario que ingrese el valor del radio
 // de una circunferencia y calcular y mostrar por pantalla el área y perímetro. Recuerde que
 // para calcular el área y el perímetro se utilizan las siguientes fórmulas:
-// area = PI * radio2
-// perimetro = 2 * PI * radio
+//area = PI * radio2
+//perimetro = 2 * PI * radio
 // const PI2 = 3.141592653589793;
 // var num02 = prompt("Ingrese el radio de la circunferencia");
 // console.log(`El area de la circunferencia es: ${PI2 * Math.pow(num02,2)}`);
+
 // console.log("area con PI interno: " + Math.PI*Math.pow(num02,2));
+
 // console.log(`El perimetro de la circunferencia es: ${2 * Math.PI * num02}`);
 
 // 3. Escriba un programa en donde se pida la edad del usuario. Si el usuario es mayor de
@@ -59,14 +61,25 @@
 // var var05a=parseInt(prompt("ingrese numero 1"));
 // var var05b=parseInt(prompt("ingrese numero 2"));
 // do{
-//     var ope = prompt("ingrese operacion a realizar")
-//     console.log(menu);
+//     console.log(menu());
+//     //var ope = prompt(menu2() + "\nIngrese operacion a realizar" );
+//     var ope = prompt("Ingrese operacion a realizar" );
 //     ope = ope.toUpperCase();
 //     if(ope != 0) {
 //         console.log(operacion(var05a,var05b));
 //     }
 // }while(ope !=0);
 
+// function menu2(){
+//     var menu = "****************************\n"  +
+//         "S) Suma\n" +
+//         "R) Resta\n" +
+//         "M) Multiplicacion\n" +
+//         "D) Division\n" +
+//         "0) Salir\n" +
+//     "****************************";
+//     return menu;
+// }
 // function menu(){
 //     console.log("****************************");
 //         console.log("S) Suma");
@@ -120,8 +133,8 @@
 // var suma07 = 0;
 // do {
 //     let aux=parseInt(prompt("ingrese un numero para sumar"));
-//     suma07 = suma07 + aux;
-//     console.log("suma: " + suma07)
+//     suma07 += aux;
+//     console.log("suma: " + suma07);
 // } while (var07>suma07);
 
 // 8. Escribir un programa que lea números enteros hasta teclear 0 (cero). Al finalizar el
@@ -191,24 +204,25 @@
 // console.log("con for of: " + var09c);
 
 // 10. Escribir una función flecha que reciba una palabra y la devuelva al revés.
-var var10=prompt("escriba una palabra");
-var var10f="";
-var a = var10.split("").reverse();
-console.log(a);
-function invertir (a,var10f){
-    for(let i=0; i<a.length; i++){
-        var10f=var10f + a[i];
-        console.log(var10f);        
-    }
-    return var10f;
-}
-console.log("resultado metodo funcion con array a: " + invertir(a,var10f));
+// var var10=prompt("escriba una palabra");
+// var var10f="";
+// var a = var10.split("").reverse();
+// console.log(a);
+// function invertir (a,var10f){
+//     for(let i=0; i<a.length; i++){
+//         var10f=var10f + a[i];
+//         console.log(var10f);        
+//     }
+//     return var10f;
+// }
+// console.log("resultado metodo funcion con array a: " + invertir(a,var10f));
 
-console.log("metodo flecha: " + var10f);
-let var10r = (b,var10f) => {for(let i=0; i<b.length; i++){ var10f=var10f + b[i];} return var10f;};
-console.log("resultado metodo flecha con array b: " + var10r(var10.split("").reverse(),var10f));
+// console.log("metodo flecha: " + var10f);
+// let var10r = (b,var10f) => {for(let i=0; i<b.length; i++){ var10f=var10f + b[i];} return var10f;};
+// console.log("resultado metodo flecha con array b: " + var10r(var10.split("").reverse(),var10f));
 
-
+//OTRA FORMA MAS
+// var var10=prompt("escriba una palabra");
 // var var10s = var10.split("");
 // var var10r = var10s.reverse();
 // console.log(var10r);
@@ -220,60 +234,89 @@ console.log("resultado metodo flecha con array b: " + var10r(var10.split("").rev
 //     }
 //     console.log(var10f);
 // } 
-// var invertir = (var10.split("").reverse()) => ; // => var10r.length
-// let resp = (invertir) => {for(let i=0; i< invertir.length; i++){ console.log(invertir[i]);} 
+// var var10f="";
+// var invertir = (var10.split("").reverse());
 
+// let resp = (invertir) => {for(let i=0; i< invertir.length; i++){ console.log(invertir[i]); var10f = var10f + var10.charAt(var10.length -1 - i);} return var10f;
 // }
-// console.log("con funcion flecha: " + invertir);
-// console.log("con funcion resp: " + resp());
-
-// let rev = (var10s) => var10s.forEach(element => {
-//     console.log(var10.charAt(var10.length))
-// });
-
-// let frutas = ["Manzana", "Naranja", "Uva"];
-// for (let i = 0; i < frutas.length; i++) {
-//   console.log(frutas[i]);
-// }
-// //array.forEach(function (valorActual, indice, frutas) {}, thisValor);
-// let valorActual;
-// let indice;
-// frutas.forEach(mostrarElementosArray);
-// function mostrarElementosArray(elemento, indice, array) {
-//   console.log("a[" + indice + "] = " + elemento);
-// }
-
-// for (let fruta of frutas) {
-//   console.log(fruta); // ["Manzana", "Naranja", "Uva"];
-// }
-// var empleado1 ={
-//     nom: "nom1",
-//     ape: "ape1",
-// }
-// var empleado2 ={
-//     nom: "nom2",
-//     ape: "ape2",
-// }
-// var empleados = [empleado1,empleado2];
-// for (let empleado of empleados) {
-//   for (let dato in empleado) {
-//     console.log(empleado[dato]);
-//   }
-// }
+// console.log("con funcion resp: " + resp(invertir));
 
 // 11. Escribir una función que reciba un String y devuelva la palabra más larga.
 // String Ejemplo: “Guia de JavaScript”
 // Resultado esperado : “JavaScript”
 
+// function palabraMasLarga(){
+//     var var11=prompt("escriba una frase");
+//     var arrPalabras = var11.split(" ");
+//     var posMasLarga=0;
+// for (let dato in arrPalabras){
+//     console.log(dato);
+//         if(arrPalabras[dato].length > arrPalabras[posMasLarga].length){
+//             posMasLarga=dato;
+//             console.log(arrPalabras[posMasLarga]);
+//         }
+//     };
+//     return arrPalabras[posMasLarga];
+// }
+// console.log("palabra mas larga: " + palabraMasLarga());    
+
+
 // 12. Escribir una función flecha de JavaScript que reciba un argumento y retorne el tipo de
 // dato.
+// let tipoDato = (dato) => {return typeof dato};
+// console.log("el tipo de dato es: " + tipoDato(45));
+// console.log("el tipo de dato es: " + tipoDato("45"));
+// console.log("el tipo de dato es: " + tipoDato(true));
+// console.log("el tipo de dato es: " + tipoDato(45.24));
 
 // 13. Crear un objeto persona, con las propiedades nombre, edad, sexo ('H' hombre, 'M' mujer,
 // 'O' otro), peso y altura. A continuación, muestre las propiedades del objeto JavaScript.
+// var Persona = {
+//     nombre: "nom1",
+//     edad: "ape1",
+//     Sexo: "H",
+//     peso: 80,
+//     altura:175,
+// };
+// var Sexo = {
+//     H: "hombre",
+//     M: "mujer",
+//     O: "otro",
+// };
+// console.log(Persona);
+// console.log(Persona.Sexo);
+
 // 14. Crear un objeto libro que contenga las siguientes propiedades: ISBN, Título, Autor,
 // Número de páginas. Crear un método para cargar un libro pidiendo los datos al usuario
 // y luego informar mediante otro método el número de ISBN, el título, el autor del libro y el
 // numero de páginas.
+
+function Libro(isbn, titulo, autor, numeroPaginas){
+    this.isbn = isbn;
+    this.titulo = titulo;
+    this.autor = autor;
+    this.numeroPaginas = numeroPaginas;
+}
+function crearLibro(){
+    var isbn = parseInt(Math.random()*99999);
+    var titulo = prompt("ingrese titulo");
+    var autor = prompt("ingrese autor");
+    var numeroPaginas = prompt("numero de paginas");
+    return new Libro(isbn, titulo, autor, numeroPaginas);
+}
+
+var libro1 = new Libro(125478, "titulo1", "autor1", 1000);
+var libro2 = new Libro(225478, "titulo2", "autor2", 2000);
+var libro3 = crearLibro();
+
+function mostrarLibro(libro){
+    console.log(libro);
+};
+mostrarLibro(libro1);
+mostrarLibro(libro2);
+mostrarLibro(libro3);
+
+
 // 15. Escribe un programa JavaScript para calcular el área y el perímetro de un objeto Círculo
 // con la propiedad radio. Nota: Cree dos métodos para calcular el área y el perímetro. El
 // radio del círculo lo proporcionará el usuario.
