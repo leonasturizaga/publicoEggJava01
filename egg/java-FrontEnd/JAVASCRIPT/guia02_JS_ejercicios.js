@@ -260,6 +260,34 @@
 // }
 // console.log("palabra mas larga: " + palabraMasLarga());    
 
+// OTRA FORMA de LUIS usando SORT y COMPARE
+// var parrafo = "un parrafo cualquiera para contar";
+// let arraystr = parrafo.split(' ');
+// palabraMasLarga(arraystr);
+// // console.log(palabra);
+// console.log("La palabra es >>>>> " + arraystr[arraystr.length - 1])
+
+
+// function palabraMasLarga(str){
+   
+//     //let arraystr = parrafo.split(' ');
+
+//     str.sort(compare);
+//     console.log("Las palabras son: ");
+//     for (let palabra of str){
+//     console.log(palabra, palabra.length);
+    
+//     }
+//     //console.log("La palabra es >>>>> " + arraystr[arraystr.length - 1])
+// }
+
+// function compare(a,b) {
+
+//     if (a.length > b.length) return 1; // si el primer valor es mayor que el segundo
+//     if (a.length == b.length) return 0; // si ambos valores son iguales
+//     if (a.length < b.length) return -1;
+    
+// }
 
 // 12. Escribir una función flecha de JavaScript que reciba un argumento y retorne el tipo de
 // dato.
@@ -291,45 +319,131 @@
 // y luego informar mediante otro método el número de ISBN, el título, el autor del libro y el
 // numero de páginas.
 
-function Libro(isbn, titulo, autor, numeroPaginas){
-    this.isbn = isbn;
-    this.titulo = titulo;
-    this.autor = autor;
-    this.numeroPaginas = numeroPaginas;
-}
-function crearLibro(){
-    var isbn = parseInt(Math.random()*99999);
-    var titulo = prompt("ingrese titulo");
-    var autor = prompt("ingrese autor");
-    var numeroPaginas = prompt("numero de paginas");
-    return new Libro(isbn, titulo, autor, numeroPaginas);
-}
+// function Libro(isbn, titulo, autor, numeroPaginas){
+//     this.isbn = isbn;
+//     this.titulo = titulo;
+//     this.autor = autor;
+//     this.numeroPaginas = numeroPaginas;
+// }
+// function crearLibro(){
+//     var isbn = parseInt(Math.random()*99999);
+//     var titulo = prompt("ingrese titulo");
+//     var autor = prompt("ingrese autor");
+//     var numeroPaginas = prompt("numero de paginas");
+//     return new Libro(isbn, titulo, autor, numeroPaginas);
+// }
 
-var libro1 = new Libro(125478, "titulo1", "autor1", 1000);
-var libro2 = new Libro(225478, "titulo2", "autor2", 2000);
-var libro3 = crearLibro();
+// var libro1 = new Libro(125478, "titulo1", "autor1", 1000);
+// var libro2 = new Libro(225478, "titulo2", "autor2", 2000);
+// var libro3 = crearLibro();
 
-function mostrarLibro(libro){
-    console.log(libro);
-};
-mostrarLibro(libro1);
-mostrarLibro(libro2);
-mostrarLibro(libro3);
+// function mostrarLibro(libro){
+//     console.log(libro);
+// };
+// mostrarLibro(libro1);
+// mostrarLibro(libro2);
+// mostrarLibro(libro3);
 
 
 // 15. Escribe un programa JavaScript para calcular el área y el perímetro de un objeto Círculo
 // con la propiedad radio. Nota: Cree dos métodos para calcular el área y el perímetro. El
 // radio del círculo lo proporcionará el usuario.
+// function areaCirculo(radio){
+//     area = Math.PI*Math.pow(radio, 2);
+//     return area;
+// }
+// function perimetroCirculo(radio){
+//     perimetro = Math.PI*radio*2;
+//     return perimetro;
+// }
+// var circulo = {
+//     radio: prompt("ingrese el radio del circulo"),
+// };
+// console.log(circulo + "Area: " + areaCirculo(circulo.radio) + ", Perimetro: " + perimetroCirculo(circulo.radio) );
+
+
 // 16. Realizar un programa que rellene dos vectores al mismo tiempo, con 5 valores aleatorios
 // y los muestre por pantalla.
+// let vector1 = new Array();
+// let vector2 = new Array();
+// llenarVector();
+// console.log(vector1);
+// console.log(vector2);
+// console.log(vector1.forEach(mostrarElementos));
+// console.log(mostrarVector(vector2));
+// function llenarVector(){
+//     n=5;
+//     for (let i = 0; i < n; i++) {
+//         vector1[i] = parseInt(Math.random()*99);
+//         vector2[i] = parseInt(Math.random()*99);
+//     }
+// }
+// function mostrarVector(vector){
+//     vector.forEach(element => {
+//     console.log(element);
+//     });
+// }
+// function mostrarElementos(elemento,indice,array){
+//     console.log("array[" + indice + "]: " + elemento);
+// }
+
 // 17. Realizar un programa que elimine los dos últimos elementos de un array. Mostrar el
 // resultado
+// let var17 = new Array();
+// var17 = llenarVector(10);
+// console.log(var17);
+// var17.splice(var17.length-2,2);
+// console.log(var17);
+// function llenarVector(n){
+//     let vector = new Array();
+//     for (let i = 0; i < n; i++) {
+//         vector[i] = parseInt(Math.random()*99);
+//     }
+//     return vector;
+// }
+// // para reemplazar elementos se usa el mismo splice, eliminando 1 elemento y adicionando los elementos que se necesite en ese lugar.
+// var17.splice(var17.length-1, 1, 7000, 8000, 9000);
+// console.log(var17);
+
 // 18. A partir del siguiente array: var valores = [true, 5, false, "hola", "adios", 2]:
 // a) Determinar cual de los dos elementos de texto es mayor
 // b) Utilizando exclusivamente los dos valores booleanos del array, determinar los
 // operadores necesarios para obtener un resultado true y otro resultado false
 // c) Determinar el resultado de las cinco operaciones matemáticas realizadas con los
 // dos elementos numéricos
+// var valores = [true, 5, false, "hola", "adios", 2];
+// console.log("a) " + retornaMayor(valores[3],valores[4]));
+// console.log("b) ");
+// operadorTrueFalse(valores[0],valores[2]);
+// operacionesMatematicas(valores[1], valores[5]);
+// function retornaMayor(a,b){
+//     if(a>b){
+//         return a;
+//     }else{
+//         if(a<b){
+//             return b;
+//         }else{
+//             console.log("ninguno es mayor");
+//         }    
+//     }
+// };
+// function operadorTrueFalse(a,b){
+//     let aux1 = a!=b;
+//     let aux2 = a==b;
+//     console.log("operador != para da: " + aux1);
+//     console.log(a!=b);
+//     console.log("operador == para da: " + aux2);
+//     console.log(a==b);
+// }
+// function operacionesMatematicas(a,b){
+//     console.log("suma: " + (a+b));
+//     console.log("resta: " + (a-b));
+//     console.log("multiplicacion: " + (a*b));
+//     console.log("division: " + (a/b));
+//     console.log("exponeciacion: " + (a**b));
+//     console.log("modulo (resto): " + (a%b));
+// }
+
 // 19. Realizar un programa en Java donde se creen dos arreglos: el primero será un arreglo A
 // de 50 números reales, y el segundo B, un arreglo de 20 números, también reales. El
 // programa deberá inicializar el arreglo A con números aleatorios y mostrarlo por pantalla.
@@ -337,16 +451,171 @@ mostrarLibro(libro3);
 // ordenados al arreglo B de 20 elementos, y rellenar los 10 últimos elementos con el valor
 // 0.5. Mostrar los dos arreglos resultantes: el ordenado de 50 elementos y el combinado
 // de 20.
+// var arrayA = new Array();
+// var arrayAux = new Array();
+// var arrayB = new Array();
+// arrayA=llenarVector(50);
+// arrayA.sort(compare);  //sort solo ordena como string, para numerico se necesita la funcion no definida 
+// console.log(arrayA);
+// arrayB=arrayA.splice(0, 10);   //cortar/extraer valores se puede asignar a un nuevo array
+// console.log(arrayB);
+// arrayAux=arrayB.splice(10, 0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5); //adicionar/substituir NO se puede asiganar a otro array, los valores quendan en el mismo arrayB
+// console.log("arrayB: " + arrayB);
+// console.log("arrayAux: " + arrayAux);
+
+// function llenarVector(n){
+//     let array = new Array();
+//     for (
+//         let i = 0; i < n; i++) {
+//         const element = array[i]=parseInt(Math.random()*99);         
+//     }
+//     return array;
+// };
+// function compare(a,b){
+//     if(a>b){return 1};
+//     if(a==b){return 0};  // con == compara como numeros, con = NO compara bien
+//     if(a<b){return -1};
+// }
+
+
 // 20. Realizar un programa que obtenga la siguiente matriz [[3], [6], [9], [12], [15]] y devuelve y
 // muestre el siguiente array [6, 9, 12, 15, 18].
+// var var20 = [[3], [6], [9], [12], [15]];
+// console.log(var20);
+// var array20 = var20.flat();
+// console.log(array20);
+
+// var array20f = array20.map(function(e){e = (e+3);});  //no funciona
+// console.log(array20);
+// console.log(array20f);
+
+// array20final = arrayOperacion(array20);
+// console.log(array20final);
+
+// function arrayOperacion(array){
+//     let k=3
+//     for (let i = 0; i < array.length; i++) {
+//         array[i] = array[i]+k;
+//     }
+//     return array;
+// }
+
+
 // 21. Escribir un programa para obtener un array de las propiedades de un objeto Persona.
 // Las propiedades son nombre, edad, sexo ('H' hombre, 'M' mujer, 'O' otro), peso y altura.
+// var persona1 = new Persona("nom1", 10, "H", 100, 1000);
+// function Persona(nombre, edad, sexo, peso, altura) {
+// this.nombre = nombre;
+// this.edad = edad;
+// this.sexo = sexo;
+// this.peso = peso;
+// this.altura = altura;
+// }
+// console.log(persona1);
+// var arrayPersona1 = JSON.stringify(persona1);
+// console.log(arrayPersona1);
+
+
 // 22. Escribir un programa de JavaScript que al clickear un botón muestre un mensaje a
 // elección.
+// let titulos = document.getElementsByName("titulo");
+// let pes = document.getElementsByTagName("p");
+// let p01Ej22 = document.getElementById("p01Ej22");
+
+// let inputEj22 = document.getElementById("p01Ej22");
+// let botonEj22 = document.getElementById("btnEj22");
+
+// let ul = document.getElementById("listaApi");
+// let botonDatosApi = document.getElementById("btnDatosApi");
+
+// document.getElementById("btnEj22").onclick=mensajeOnClick;
+// document.getElementById("btnDatosApi").onclick = traerDatosApi;
+
+// function mensajeOnClick(){
+//     p01Ej22.innerHTML = "se muestra un mensaje cualquiera on click";
+    
+//     titulos.forEach(e => {
+//         e.style.color = "blue";
+//         e.hidden = !e.hidden;
+//     });
+
+//     console.log("se muestra un mensaje cualquiera on click");
+    
+// }
+// function colorTitulo(){  //no funciona
+//     titulos.forEach(e => {
+//         e.hidden = !e.hidden;
+//         e.style.color = "red";
+//     });
+// }
+// async function getAllCharacters(){
+//     let results = [{name: "rick", edad: 15}, {name: "summer", edad: 16}, {name: "other", edad: 18}];
+//     console.log(results);
+//     return results;
+// }
+// async function getAllCharacters2(){
+//     let response = await fetch("character.json");
+//     let {results} = await response.json();
+//     return results;
+// }
+// async function getAllCharacters3(){
+//     let results = [{name: "rick"}, {name: "summer"}, {name: "other"}];
+//     console.log(results);
+//     return results;
+// }
+// async function traerDatosApi(){
+//     let results = await getAllCharacters();
+//     console.log(results);
+//     results.forEach(e => {
+//         agregar(e.name + ", " + e.edad);
+//     });
+// }
+// function agregar(nombre){
+//     let li = document.createElement("li");
+//     li.innerHTML = nombre;
+//     ul.append(li);
+// }
+
 // 23. Resalte todas las palabras de más de 8 caracteres en el texto del párrafo (con un fondo
 // amarillo, por ejemplo)
+let texto23 = "En relación con la seguridad, la cookie se guarda en el cliente, el usuario puede ver el archivo de la cookie y puede realizar operaciones similares de modificación y eliminación en el archivo de la cookie. La seguridad de los datos de la cookie es difícil de garantizar, mientras que los datos de la sesión se almacenan en el lado del servidor, tiene mejor seguridad. Si se usa junto con la base de datos, puede mantener los datos de la sesión durante mucho tiempo y obtener una buena seguridad. Por lo tanto, se puede decir que las sesiones son más seguras que las cookies.";
+let p02Ej23 = document.getElementById("p02Ej23");
+p01Ej23.innerHTML = texto23;
+
+console.log(resaltar());
+p02Ej23.innerHTML =resaltar(8);
+//document.getElementById("p01Ej23")=resaltar(5);
+function resaltar(n){
+    let aux = texto23.split(" ");
+    let aux2="";
+    console.log(aux);
+
+    aux.forEach(e => {
+        if (e.length>n) {
+           console.log(e + e.length);
+           aux2 = aux2 +" "+ `<span style="background-color: yellow;"> ${e}</span>`;
+           //e.styles.backgroundColor = "blue";  //no funciona
+
+        } else {
+            aux2 = aux2 +" "+ e;
+        }
+    });
+    return aux2;
+}
+//console custom
+// const spacing = '10px';
+// const styles = `padding: ${spacing}; background-color: black; color:
+// yellow; font-style:
+// italic; border: 1px solid black; font-size: 2em;`;
+// p01Ej23.innerHTML= ('%cEGG', styles);
+// console.log('%cEGG', styles);
+
+//nuevoTexto23 += `<span style="background-color: rgb(255, 251, 35);">${arrayTexto23[i]}</span> `;
+
+
 // 24. Escribir un programa de JavaScript que a través de un formulario calcule el radio de un
 // circulo y lo muestre en el HTML.
+
 // 25. Escriba una función de JavaScript para obtener los valores de Nombre y Apellido del
 // siguiente formulario.
 // <!DOCTYPE html>
