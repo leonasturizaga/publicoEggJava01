@@ -578,43 +578,72 @@
 
 // 23. Resalte todas las palabras de más de 8 caracteres en el texto del párrafo (con un fondo
 // amarillo, por ejemplo)
-let texto23 = "En relación con la seguridad, la cookie se guarda en el cliente, el usuario puede ver el archivo de la cookie y puede realizar operaciones similares de modificación y eliminación en el archivo de la cookie. La seguridad de los datos de la cookie es difícil de garantizar, mientras que los datos de la sesión se almacenan en el lado del servidor, tiene mejor seguridad. Si se usa junto con la base de datos, puede mantener los datos de la sesión durante mucho tiempo y obtener una buena seguridad. Por lo tanto, se puede decir que las sesiones son más seguras que las cookies.";
-let p02Ej23 = document.getElementById("p02Ej23");
-p01Ej23.innerHTML = texto23;
+// let texto23 = "En relación con la seguridad, la cookie se guarda en el cliente, el usuario puede ver el archivo de la cookie y puede realizar operaciones similares de modificación y eliminación en el archivo de la cookie. La seguridad de los datos de la cookie es difícil de garantizar, mientras que los datos de la sesión se almacenan en el lado del servidor, tiene mejor seguridad. Si se usa junto con la base de datos, puede mantener los datos de la sesión durante mucho tiempo y obtener una buena seguridad. Por lo tanto, se puede decir que las sesiones son más seguras que las cookies.";
+// let p02Ej23 = document.getElementById("p02Ej23");
+// p01Ej23.innerHTML = texto23;
 
-console.log(resaltar());
-p02Ej23.innerHTML =resaltar(8);
-//document.getElementById("p01Ej23")=resaltar(5);
-function resaltar(n){
-    let aux = texto23.split(" ");
-    let aux2="";
-    console.log(aux);
+// console.log(resaltar());
+// p02Ej23.innerHTML =resaltar(4);
+// //document.getElementById("p01Ej23")=resaltar(5);
+// function resaltar(n){
+//     let aux = texto23.split(" ");
+//     let aux2="";
+//     console.log(aux);
 
-    aux.forEach(e => {
-        if (e.length>n) {
-           console.log(e + e.length);
-           aux2 = aux2 +" "+ `<span style="background-color: yellow;"> ${e}</span>`;
-           //e.styles.backgroundColor = "blue";  //no funciona
+//     aux.forEach(e => {
+//         if (e.length>n) {
+//            console.log(e + e.length);
+//            aux2 = aux2 +" "+ `<span style="background-color: yellow;"> ${e}</span>`;
+//            //e.styles.backgroundColor = "blue";  //no funciona
 
-        } else {
-            aux2 = aux2 +" "+ e;
-        }
-    });
-    return aux2;
-}
-//console custom
-// const spacing = '10px';
-// const styles = `padding: ${spacing}; background-color: black; color:
-// yellow; font-style:
-// italic; border: 1px solid black; font-size: 2em;`;
-// p01Ej23.innerHTML= ('%cEGG', styles);
-// console.log('%cEGG', styles);
-
-//nuevoTexto23 += `<span style="background-color: rgb(255, 251, 35);">${arrayTexto23[i]}</span> `;
+//         } else {
+//             aux2 = aux2 +" "+ e;
+//         }
+//     });
+//     return aux2;
+// }
+// // NO SE USO STYLES
+// //console custom
+// // const spacing = '10px';
+// // const styles = `padding: ${spacing}; background-color: black; color:
+// // yellow; font-style:
+// // italic; border: 1px solid black; font-size: 2em;`;
+// // p01Ej23.innerHTML= ('%cEGG', styles);
+// // console.log('%cEGG', styles);
+// // EJEMPLO de Gerardo ok!
+// // nuevoTexto23 += `<span style="background-color: rgb(255, 251, 35);">${arrayTexto23[i]}</span> `;
 
 
 // 24. Escribir un programa de JavaScript que a través de un formulario calcule el radio de un
 // circulo y lo muestre en el HTML.
+let p01Ej24 = document.getElementById("p01Ej24");
+let p02Ej24 = document.getElementById("p02Ej24");
+let area = document.getElementById("areaCirculo");
+let perimetro = document.getElementById("perimetroCirculo");
+
+area.onkeyup = keyupArea;
+console.log(area);
+function keyupArea(e){
+    let aux = e.target.value;
+    p01Ej24.innerHTML=`El radio es: ${radioArea(aux)}`;
+return aux;
+}
+function radioArea(area){
+    let r = Math.pow((area/Math.PI), 0.5);
+    return r;
+}
+
+//creates a listener for when you press a key
+perimetro.onkeyup = keyupPerimetro;
+function keyupPerimetro(e) {
+  //setting your input text to the global Javascript Variable for every key press
+   p02Ej24.innerHTML=`El radio es: ${radioPerimetro(e.target.value)}`;
+    return e.target.value;
+}
+function radioPerimetro(perimetro){
+    let r = (perimetro/(2*Math.PI));
+    return r;
+}
 
 // 25. Escriba una función de JavaScript para obtener los valores de Nombre y Apellido del
 // siguiente formulario.
