@@ -211,7 +211,7 @@
 // function invertir (a,var10f){
 //     for(let i=0; i<a.length; i++){
 //         var10f=var10f + a[i];
-//         console.log(var10f);        
+//         console.log(var10f);
 //     }
 //     return var10f;
 // }
@@ -233,7 +233,7 @@
 //         var10f = var10f + var10.charAt(var10.length -1 - i);
 //     }
 //     console.log(var10f);
-// } 
+// }
 // var var10f="";
 // var invertir = (var10.split("").reverse());
 
@@ -258,7 +258,7 @@
 //     };
 //     return arrPalabras[posMasLarga];
 // }
-// console.log("palabra mas larga: " + palabraMasLarga());    
+// console.log("palabra mas larga: " + palabraMasLarga());
 
 // OTRA FORMA de LUIS usando SORT y COMPARE
 // var parrafo = "un parrafo cualquiera para contar";
@@ -267,16 +267,15 @@
 // // console.log(palabra);
 // console.log("La palabra es >>>>> " + arraystr[arraystr.length - 1])
 
-
 // function palabraMasLarga(str){
-   
+
 //     //let arraystr = parrafo.split(' ');
 
 //     str.sort(compare);
 //     console.log("Las palabras son: ");
 //     for (let palabra of str){
 //     console.log(palabra, palabra.length);
-    
+
 //     }
 //     //console.log("La palabra es >>>>> " + arraystr[arraystr.length - 1])
 // }
@@ -286,7 +285,7 @@
 //     if (a.length > b.length) return 1; // si el primer valor es mayor que el segundo
 //     if (a.length == b.length) return 0; // si ambos valores son iguales
 //     if (a.length < b.length) return -1;
-    
+
 // }
 
 // 12. Escribir una función flecha de JavaScript que reciba un argumento y retorne el tipo de
@@ -344,7 +343,6 @@
 // mostrarLibro(libro2);
 // mostrarLibro(libro3);
 
-
 // 15. Escribe un programa JavaScript para calcular el área y el perímetro de un objeto Círculo
 // con la propiedad radio. Nota: Cree dos métodos para calcular el área y el perímetro. El
 // radio del círculo lo proporcionará el usuario.
@@ -360,7 +358,6 @@
 //     radio: prompt("ingrese el radio del circulo"),
 // };
 // console.log(circulo + "Area: " + areaCirculo(circulo.radio) + ", Perimetro: " + perimetroCirculo(circulo.radio) );
-
 
 // 16. Realizar un programa que rellene dos vectores al mismo tiempo, con 5 valores aleatorios
 // y los muestre por pantalla.
@@ -424,7 +421,7 @@
 //             return b;
 //         }else{
 //             console.log("ninguno es mayor");
-//         }    
+//         }
 //     }
 // };
 // function operadorTrueFalse(a,b){
@@ -455,7 +452,7 @@
 // var arrayAux = new Array();
 // var arrayB = new Array();
 // arrayA=llenarVector(50);
-// arrayA.sort(compare);  //sort solo ordena como string, para numerico se necesita la funcion no definida 
+// arrayA.sort(compare);  //sort solo ordena como string, para numerico se necesita la funcion no definida
 // console.log(arrayA);
 // arrayB=arrayA.splice(0, 10);   //cortar/extraer valores se puede asignar a un nuevo array
 // console.log(arrayB);
@@ -467,7 +464,7 @@
 //     let array = new Array();
 //     for (
 //         let i = 0; i < n; i++) {
-//         const element = array[i]=parseInt(Math.random()*99);         
+//         const element = array[i]=parseInt(Math.random()*99);
 //     }
 //     return array;
 // };
@@ -476,7 +473,6 @@
 //     if(a==b){return 0};  // con == compara como numeros, con = NO compara bien
 //     if(a<b){return -1};
 // }
-
 
 // 20. Realizar un programa que obtenga la siguiente matriz [[3], [6], [9], [12], [15]] y devuelve y
 // muestre el siguiente array [6, 9, 12, 15, 18].
@@ -500,7 +496,6 @@
 //     return array;
 // }
 
-
 // 21. Escribir un programa para obtener un array de las propiedades de un objeto Persona.
 // Las propiedades son nombre, edad, sexo ('H' hombre, 'M' mujer, 'O' otro), peso y altura.
 // var persona1 = new Persona("nom1", 10, "H", 100, 1000);
@@ -514,7 +509,6 @@
 // console.log(persona1);
 // var arrayPersona1 = JSON.stringify(persona1);
 // console.log(arrayPersona1);
-
 
 // 22. Escribir un programa de JavaScript que al clickear un botón muestre un mensaje a
 // elección.
@@ -533,14 +527,14 @@
 
 // function mensajeOnClick(){
 //     p01Ej22.innerHTML = "se muestra un mensaje cualquiera on click";
-    
+
 //     titulos.forEach(e => {
 //         e.style.color = "blue";
 //         e.hidden = !e.hidden;
 //     });
 
 //     console.log("se muestra un mensaje cualquiera on click");
-    
+
 // }
 // function colorTitulo(){  //no funciona
 //     titulos.forEach(e => {
@@ -613,37 +607,36 @@
 // // EJEMPLO de Gerardo ok!
 // // nuevoTexto23 += `<span style="background-color: rgb(255, 251, 35);">${arrayTexto23[i]}</span> `;
 
-
 // 24. Escribir un programa de JavaScript que a través de un formulario calcule el radio de un
 // circulo y lo muestre en el HTML.
-let p01Ej24 = document.getElementById("p01Ej24");
-let p02Ej24 = document.getElementById("p02Ej24");
-let area = document.getElementById("areaCirculo");
-let perimetro = document.getElementById("perimetroCirculo");
+// let p01Ej24 = document.getElementById("p01Ej24");
+// let p02Ej24 = document.getElementById("p02Ej24");
+// let area = document.getElementById("areaCirculo");
+// let perimetro = document.getElementById("perimetroCirculo");
 
-area.onkeyup = keyupArea;
-console.log(area);
-function keyupArea(e){
-    let aux = e.target.value;
-    p01Ej24.innerHTML=`El radio es: ${radioArea(aux)}`;
-return aux;
-}
-function radioArea(area){
-    let r = Math.pow((area/Math.PI), 0.5);
-    return r;
-}
+// area.onkeyup = keyupArea;
+// console.log(area);
+// function keyupArea(e){
+//     let aux = e.target.value;
+//     p01Ej24.innerHTML=`El radio es: ${radioArea(aux)}`;
+// return aux;
+// }
+// function radioArea(area){
+//     let r = Math.pow((area/Math.PI), 0.5);
+//     return r;
+// }
 
-//creates a listener for when you press a key
-perimetro.onkeyup = keyupPerimetro;
-function keyupPerimetro(e) {
-  //setting your input text to the global Javascript Variable for every key press
-   p02Ej24.innerHTML=`El radio es: ${radioPerimetro(e.target.value)}`;
-    return e.target.value;
-}
-function radioPerimetro(perimetro){
-    let r = (perimetro/(2*Math.PI));
-    return r;
-}
+// //creates a listener for when you press a key
+// perimetro.onkeyup = keyupPerimetro;
+// function keyupPerimetro(e) {
+//   //setting your input text to the global Javascript Variable for every key press
+//    p02Ej24.innerHTML=`El radio es: ${radioPerimetro(e.target.value)}`;
+//     return e.target.value;
+// }
+// function radioPerimetro(perimetro){
+//     let r = (perimetro/(2*Math.PI));
+//     return r;
+// }
 
 // 25. Escriba una función de JavaScript para obtener los valores de Nombre y Apellido del
 // siguiente formulario.
@@ -659,3 +652,31 @@ function radioPerimetro(perimetro){
 // </form>
 // </body>
 // </html>
+let nombre = document.getElementsByName("nombre")[0];
+let apellido = document.getElementsByName("apellido")[0];
+let nombreSubmit;
+let apellidoSubmit;
+
+function getFormValores() {
+  nombreSubmit = document.getElementsByName("nombre")[0].getAttribute("value");
+  apellidoSubmit = document.getElementsByName("apellido")[0].getAttribute("value");
+  
+  for (let i = 0; i < 10; i++) {
+    console.log("submit:" + nombreSubmit + " - " + apellidoSubmit);
+    console.log(nombre + " - " + apellido);
+    if(i==9){alert("ok")}
+  }
+}
+
+nombre.onkeyup = keyupNombre;
+apellido.onkeyup = keyupApellido;
+function keyupNombre(e) {
+
+  nombre = e.target.value;
+  console.log(nombre + " - " + apellido);
+}
+function keyupApellido(e) {
+  apellido = e.target.value;
+  console.log(nombre + " - " + apellido);
+}
+
